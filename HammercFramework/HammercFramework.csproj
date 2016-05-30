@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C2636A9D-F30A-4FE8-BC96-74BA4A3BE36F}</ProjectGuid>
+    <ProjectHome />
+    <EgretProject>True</EgretProject>
+    <NewEgretProject>True</NewEgretProject>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <OutputType>Library</OutputType>
+    <TransformWebConfigEnabled>False</TransformWebConfigEnabled>
+    <AutoParameterizationWebConfigConnectionStrings>False</AutoParameterizationWebConfigConnectionStrings>
+    <StartupFile />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptModuleKind>CommonJS</TypeScriptModuleKind>
+    <EnableTypeScript>true</EnableTypeScript>
+    <TypeScriptEnabled>true</TypeScriptEnabled>
+    <TypeScriptEmitBOM>false</TypeScriptEmitBOM>
+    <TypeScriptCompileOnSaveEnabled>false</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptOutDir>bin-debug\</TypeScriptOutDir>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <ItemGroup>
+    <Content Include="egretProperties.json" />
+    <Content Include="favicon.ico" />
+    <Content Include="HammercFramework.csproj" />
+    <Content Include="index.html" />
+    <Content Include="web.config" />
+    <Compile Include="bin-debug\Main.js" />
+    <Content Include="resource\default.res.json" />
+    <TypeScriptCompile Include="src\hammerc\struct\BytesReader.ts" />
+    <TypeScriptCompile Include="src\hammerc\struct\BytesWriter.ts" />
+    <TypeScriptCompile Include="src\hammerc\struct\Struct.ts" />
+    <TypeScriptCompile Include="src\hammerc\utils\Int64.ts" />
+    <TypeScriptCompile Include="src\hammerc\utils\UInt64.ts" />
+    <TypeScriptCompile Include="src\Main.ts" />
+    <TypeScriptCompile Include="libs\modules\egret\egret.d.ts" />
+    <Compile Include="libs\modules\egret\egret.js" />
+    <Compile Include="libs\modules\egret\egret.min.js" />
+    <Compile Include="libs\modules\egret\egret.native.js" />
+    <Compile Include="libs\modules\egret\egret.native.min.js" />
+    <Compile Include="libs\modules\egret\egret.web.js" />
+    <Compile Include="libs\modules\egret\egret.web.min.js" />
+    <Compile Include="template\runtime\native_loader.js" />
+    <Compile Include="template\runtime\native_require.js" />
+    <Compile Include="template\runtime\runtime_loader.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\example\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <!--Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them.-->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>58803</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:58803/</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />
+  <Target Name="Build">
+    <Exec Command="egret build -sourcemap -nocoloroutput" ContinueOnError="false" StdOutEncoding="UTF-8" CustomErrorRegularExpression=".*error.*">
+      <Output TaskParameter="Outputs" PropertyName="EgretOutput" />
+      <Output TaskParameter="ExitCode" PropertyName="EgretExitCode" />
+    </Exec>
+  </Target>
+  <Target Name="Rebuild">
+    <Exec Command="egret build -e -nocoloroutput" ContinueOnError="false" StdOutEncoding="UTF-8" CustomErrorRegularExpression=".*error.*">
+      <Output TaskParameter="Outputs" PropertyName="EgretOutput" />
+      <Output TaskParameter="ExitCode" PropertyName="EgretExitCode" />
+    </Exec>
+  </Target>
+</Project>
