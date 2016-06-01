@@ -1,9 +1,9 @@
 ﻿// =================================================================================================
 //
-//	Hammerc Framework
-//	Copyright 2016 hammerc.org All Rights Reserved.
+//    Hammerc Framework
+//    Copyright 2016 hammerc.org All Rights Reserved.
 //
-//	See LICENSE for full license information.
+//    See LICENSE for full license information.
 //
 // =================================================================================================
 
@@ -11,13 +11,13 @@ module hammerc {
     /**
      * <code>Dictionary</code> 类提供泛型哈希表的支持.
      * <p>如果 key 使用继承 egret.HashObject 的对象, 则使用 hashCode 作为其键值, 否则使用 toString() 的返回作为键值.</p>
-	 * @author wizardc
+     * @author wizardc
      */
     export class Dictionary<TKey, TValue> {
         private _map: Object;
         private _keyMap: Object;
         private _size: number;
-
+        
         /**
          * 创建一个 <code>Dictionary</code> 对象.
          * @param map 初始化时的键值对对象.
@@ -27,21 +27,21 @@ module hammerc {
             this._keyMap = {};
             this._size = 0;
         }
-
+        
         /**
          * 获取当前保存的键值对数量.
          */
         public get size(): number {
             return this._size;
         }
-
+        
         private getKey(key: TKey): string {
             if ((<any>(key)) instanceof egret.HashObject) {
                 return (<egret.HashObject>(<any>(key))).hashCode.toString();
             }
             return key.toString();
         }
-
+        
         /**
          * 添加数据.
          * @param key 键.
@@ -55,7 +55,7 @@ module hammerc {
             this._map[k] = value;
             this._keyMap[k] = key;
         }
-
+        
         /**
          * 判断是否存在数据.
          * @param key 键.
@@ -65,7 +65,7 @@ module hammerc {
             var k: string = this.getKey(key);
             return this._map.hasOwnProperty(k);
         }
-
+        
         /**
          * 获取数据.
          * @param key 键.
@@ -75,7 +75,7 @@ module hammerc {
             var k: string = this.getKey(key);
             return this._map[k];
         }
-
+        
         /**
          * 遍历当前哈希表
          * @param callbackfn 每项的回调.
@@ -104,7 +104,7 @@ module hammerc {
             --this._size;
             return true;
         }
-
+        
         /**
          * 清除哈希表.
          */
@@ -113,7 +113,7 @@ module hammerc {
             this._keyMap = {};
             this._size = 0;
         }
-
+        
         /**
          * 获取本对象的字符串表示形式.
          * @returns 本对象的字符串表示形式.
@@ -127,7 +127,7 @@ module hammerc {
             }
             return "{" + result.join(", ") + "}";
         }
-
+        
         /**
          * 获取实际进行哈希存储的对象.
          * @returns 实际进行哈希存储的对象.

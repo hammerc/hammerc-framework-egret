@@ -1,30 +1,30 @@
 ﻿// =================================================================================================
 //
-//	Hammerc Framework
-//	Copyright 2016 hammerc.org All Rights Reserved.
+//    Hammerc Framework
+//    Copyright 2016 hammerc.org All Rights Reserved.
 //
-//	See LICENSE for full license information.
+//    See LICENSE for full license information.
 //
 // =================================================================================================
 
 module hammerc {
     /**
      * <code>SmoothAStar</code> 类基于 <code>AStar</code> 类实现, 添加了获取平滑路径的功能.
-	 * <p><b>注意: </b>该类得到的平滑路径为多个连续或不连续的格子对象, 每个格子对象按直线作为路径, 格子对象都出现在需要拐角处.</p>
-	 * @author wizardc
+     * <p><b>注意: </b>该类得到的平滑路径为多个连续或不连续的格子对象, 每个格子对象按直线作为路径, 格子对象都出现在需要拐角处.</p>
+     * @author wizardc
      */
     export class SmoothAStar extends AStar {
-		/**
-		 * 创建一个 <code>SmoothAStar</code> 对象.
-		 * @param heuristic 应用的启发函数, 为空则使用曼哈顿启发函数.
-		 */
+        /**
+         * 创建一个 <code>SmoothAStar</code> 对象.
+         * @param heuristic 应用的启发函数, 为空则使用曼哈顿启发函数.
+         */
         public constructor(heuristic: (node1: AStarNode, node2: AStarNode) => number = null) {
             super(heuristic);
         }
         
-		/**
-		 * 获取平滑的最优路径.
-		 */
+        /**
+         * 获取平滑的最优路径.
+         */
         public get smoothPath(): Array<AStarNode> {
             var path: Array<AStarNode> = this.path;
             if (path == null || path.length < 3) {
@@ -35,7 +35,7 @@ module hammerc {
             }
             return path;
         }
-
+        
         private removeCollinearAStarNode(path: Array<AStarNode>): Array<AStarNode> {
             var result: Array<AStarNode> = new Array<AStarNode>();
             result.push(path[0]);
@@ -54,7 +54,7 @@ module hammerc {
             result.push(path[nowIndex]);
             return result;
         }
-
+        
         private smoothPathByFloyd(path: Array<AStarNode>): Array<AStarNode> {
             var result: Array<AStarNode> = new Array<AStarNode>();
             result.push(path[0]);
@@ -73,7 +73,7 @@ module hammerc {
             result.push(path[path.length - 1]);
             return result;
         }
-
+        
         private hasObstacle(node1: AStarNode, node2: AStarNode): boolean {
             var dx: number = node1.x - node2.x;
             dx = dx < 0 ? -dx : dx;
@@ -91,7 +91,7 @@ module hammerc {
                 return this.otherHasObstacle(dx, dy, node1, node2);
             }
         }
-
+        
         private verticalHasObstacle(node1: AStarNode, node2: AStarNode): boolean {
             var col: number = node1.x;
             var minRow: number = node1.y > node2.y ? node2.y : node1.y;
@@ -103,7 +103,7 @@ module hammerc {
             }
             return false;
         }
-
+        
         private horizontalHasObstacle(node1: AStarNode, node2: AStarNode): boolean {
             var row: number = node1.y;
             var minCol: number = node1.x > node2.x ? node2.x : node1.x;
@@ -115,7 +115,7 @@ module hammerc {
             }
             return false;
         }
-
+        
         private slopeHasObstacle(node1: AStarNode, node2: AStarNode): boolean {
             var leftNode: AStarNode = node1.x > node2.x ? node2 : node1;
             var rightNode: AStarNode = node1.x > node2.x ? node1 : node2;
@@ -143,7 +143,7 @@ module hammerc {
             }
             return false;
         }
-
+        
         private otherHasObstacle(dx: number, dy: number, node1: AStarNode, node2: AStarNode): boolean {
             var k: number = (node1.y - node2.y) / (node1.x - node2.x);
             var b: number = node1.y - k * node1.x;
@@ -214,7 +214,7 @@ module hammerc {
             }
             return false;
         }
-
+        
         private is4GridCenterPoint(x: number, y: number): boolean {
             if (x % 500 != 0 || y % 500 != 0) {
                 return false;

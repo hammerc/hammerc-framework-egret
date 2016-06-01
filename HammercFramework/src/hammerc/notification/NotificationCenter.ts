@@ -1,27 +1,27 @@
 ﻿// =================================================================================================
 //
-//	Hammerc Framework
-//	Copyright 2016 hammerc.org All Rights Reserved.
+//    Hammerc Framework
+//    Copyright 2016 hammerc.org All Rights Reserved.
 //
-//	See LICENSE for full license information.
+//    See LICENSE for full license information.
 //
 // =================================================================================================
 
 module hammerc {
     /**
      * <code>NotificationCenter</code> 类实现了消息通知功能.
-	 * @author wizardc
+     * @author wizardc
      */
     export class NotificationCenter<T> {
         private _map: Dictionary<T, MessageInfo[]>;
-
+        
         /**
          * 创建一个 <code>NotificationCenter</code> 对象.
          */
         public constructor() {
             this._map = new Dictionary<T, MessageInfo[]>();
         }
-
+        
         /**
          * 注册消息.
          * @param messageType 消息类型.
@@ -40,7 +40,7 @@ module hammerc {
             }
             list.push(new MessageInfo(messageHandler, thisObj));
         }
-
+        
         /**
          * 发送消息.
          * @param messageType 消息类型.
@@ -55,7 +55,7 @@ module hammerc {
                 }
             }
         }
-
+        
         /**
          * 注销消息.
          * @param messageType 消息类型.
@@ -74,7 +74,7 @@ module hammerc {
                 }
             }
         }
-
+        
         /**
          * 移除指定类型的所有消息监听.
          * @param messageType 消息类型.
@@ -84,7 +84,7 @@ module hammerc {
                 this._map.remove(messageType);
             }
         }
-
+        
         /**
          * 清除所有消息监听.
          */
@@ -92,22 +92,22 @@ module hammerc {
             this._map.clear();
         }
     }
-
+    
     /**
      * <code>MessageInfo</code> 类实现了消息信息对象.
-	 * @author wizardc
+     * @author wizardc
      */
     class MessageInfo {
         /**
          * 消息处理函数.
          */
         public messageHandler: Function;
-
+        
         /**
          * this 指向对象.
          */
         public thisObj: any;
-
+        
         /**
          * 创建一个 <code>MessageInfo</code> 对象.
          * @param messageHandler 消息处理函数.
