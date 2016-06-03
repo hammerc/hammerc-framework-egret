@@ -45,7 +45,7 @@ module hammerc {
          * 加入一个对象.
          * @param obj 要加入的对象.
          */
-        public enqueue(obj: T) {
+        public enqueue(obj: T): void {
             this._data.push(obj);
             var parentIndex: number = (this._data.length - 2) >> 1;
             var objIndex: number = this._data.length - 1;
@@ -121,7 +121,7 @@ module hammerc {
         /**
          * 清空数据.
          */
-        public clear() {
+        public clear(): void {
             this._data = [];
         }
         

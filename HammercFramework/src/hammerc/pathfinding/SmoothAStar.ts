@@ -25,8 +25,8 @@ module hammerc {
         /**
          * 获取平滑的最优路径.
          */
-        public get smoothPath(): Array<AStarNode> {
-            var path: Array<AStarNode> = this.path;
+        public get smoothPath(): AStarNode[] {
+            var path: AStarNode[] = this.path;
             if (path == null || path.length < 3) {
                 return path;
             } else {
@@ -36,8 +36,8 @@ module hammerc {
             return path;
         }
         
-        private removeCollinearAStarNode(path: Array<AStarNode>): Array<AStarNode> {
-            var result: Array<AStarNode> = new Array<AStarNode>();
+        private removeCollinearAStarNode(path: AStarNode[]): AStarNode[] {
+            var result: AStarNode[] = [];
             result.push(path[0]);
             var offsetX: number = path[0].x - path[1].x;
             var offsetY: number = path[0].y - path[1].y;
@@ -55,8 +55,8 @@ module hammerc {
             return result;
         }
         
-        private smoothPathByFloyd(path: Array<AStarNode>): Array<AStarNode> {
-            var result: Array<AStarNode> = new Array<AStarNode>();
+        private smoothPathByFloyd(path: AStarNode[]): AStarNode[] {
+            var result: AStarNode[] = [];
             result.push(path[0]);
             var len: number = path.length;
             var nowIndex: number = 0;

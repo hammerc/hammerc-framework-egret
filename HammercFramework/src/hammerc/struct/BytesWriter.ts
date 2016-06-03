@@ -18,7 +18,7 @@ module hammerc {
          * @param output 输出流对象.
          * @param value 要写入的数据.
          */
-        public static writeBoolean(output: egret.ByteArray, value: boolean) {
+        public static writeBoolean(output: egret.ByteArray, value: boolean): void {
             output.writeByte(value ? 1 : 0);
         }
         
@@ -27,7 +27,7 @@ module hammerc {
          * @param output 输出流对象.
          * @param value 要写入的数据.
          */
-        public static writeByte(output: egret.ByteArray, value: number) {
+        public static writeByte(output: egret.ByteArray, value: number): void {
             output.writeByte(value);
         }
         
@@ -36,7 +36,7 @@ module hammerc {
          * @param output 输出流对象.
          * @param value 要写入的数据.
          */
-        public static writeShort(output: egret.ByteArray, value: number) {
+        public static writeShort(output: egret.ByteArray, value: number): void {
             output.writeShort(value);
         }
         
@@ -45,7 +45,7 @@ module hammerc {
          * @param output 输出流对象.
          * @param value 要写入的数据.
          */
-        public static writeInt(output: egret.ByteArray, value: number) {
+        public static writeInt(output: egret.ByteArray, value: number): void {
             output.writeInt(value);
         }
         
@@ -54,7 +54,7 @@ module hammerc {
          * @param output 输出流对象.
          * @param value 要写入的数据.
          */
-        public static writeUInt(output: egret.ByteArray, value: number) {
+        public static writeUInt(output: egret.ByteArray, value: number): void {
             output.writeUnsignedInt(value);
         }
         
@@ -63,7 +63,7 @@ module hammerc {
          * @param output 输出流对象.
          * @param value 要写入的数据.
          */
-        public static writeLong(output: egret.ByteArray, value: Int64) {
+        public static writeLong(output: egret.ByteArray, value: Int64): void {
             Int64.writeInt64(output, value);
         }
         
@@ -72,7 +72,7 @@ module hammerc {
          * @param output 输出流对象.
          * @param value 要写入的数据.
          */
-        public static writeULong(output: egret.ByteArray, value: UInt64) {
+        public static writeULong(output: egret.ByteArray, value: UInt64): void {
             UInt64.writeUnsignedInt64(output, value);
         }
         
@@ -81,7 +81,7 @@ module hammerc {
          * @param output 输出流对象.
          * @param value 要写入的数据.
          */
-        public static writeFloat(output: egret.ByteArray, value: number) {
+        public static writeFloat(output: egret.ByteArray, value: number): void {
             output.writeFloat(value);
         }
         
@@ -90,7 +90,7 @@ module hammerc {
          * @param output 输出流对象.
          * @param value 要写入的数据.
          */
-        public static writeDouble(output: egret.ByteArray, value: number) {
+        public static writeDouble(output: egret.ByteArray, value: number): void {
             output.writeDouble(value);
         }
         
@@ -99,7 +99,7 @@ module hammerc {
          * @param output 输出流对象.
          * @param value 要写入的数据.
          */
-        public static writeString(output: egret.ByteArray, value: string) {
+        public static writeString(output: egret.ByteArray, value: string): void {
             output.writeUTF(value);
         }
         
@@ -108,7 +108,7 @@ module hammerc {
          * @param output 输出流对象.
          * @param value 要写入的数据.
          */
-        public static writeBytes(output: egret.ByteArray, value: egret.ByteArray) {
+        public static writeBytes(output: egret.ByteArray, value: egret.ByteArray): void {
             value.position = 0;
             output.writeUnsignedInt(value.length);
             output.writeBytes(value);
@@ -119,7 +119,7 @@ module hammerc {
          * @param output 输出流对象.
          * @param value 自定义数据.
          */
-        public static writeStruct(output: egret.ByteArray, value: Struct) {
+        public static writeStruct(output: egret.ByteArray, value: Struct): void {
             value["writeExternal"](output);
         }
     }

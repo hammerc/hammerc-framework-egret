@@ -103,7 +103,7 @@ module hammerc {
          * 预处理每个格子四周可移动的格子数据.
          * <p>注意: 在设置好地图数据后调用一次即可.</p>
          */
-        public cacheAroundLinks() {
+        public cacheAroundLinks(): void {
             for (var i: number = 0; i < this._cols; i++) {
                 for (var j: number = 0; j < this._rows; j++) {
                     var node: AStarNode = this._grid[i][j];
@@ -145,7 +145,7 @@ module hammerc {
          * @param y 指定要设定的格子在地图上的第几行.
          * @param value 指定该格子的地形代价.
          */
-        public setCostMultiplier(x: number, y: number, value: number) {
+        public setCostMultiplier(x: number, y: number, value: number): void {
             this._grid[x][y].costMultiplier = value;
         }
         
@@ -155,7 +155,7 @@ module hammerc {
          * @param y 指定要设定的格子在地图上的第几行.
          * @param value 指定该格子是否可以通行.
          */
-        public setWalkable(x: number, y: number, value: boolean) {
+        public setWalkable(x: number, y: number, value: boolean): void {
             this._grid[x][y].walkable = value;
         }
         
@@ -164,7 +164,7 @@ module hammerc {
          * @param x 设置起点格子在地图上的第几列.
          * @param y 设置起点格子在地图上的第几行.
          */
-        public setStartNode(x: number, y: number) {
+        public setStartNode(x: number, y: number): void {
             this._startNode = this._grid[x][y];
         }
         
@@ -173,7 +173,7 @@ module hammerc {
          * @param x 设置终点格子在地图上的第几列.
          * @param y 设置终点格子在地图上的第几行.
          */
-        public setEndNode(x: number, y: number) {
+        public setEndNode(x: number, y: number): void {
             this._endNode = this._grid[x][y];
         }
     }

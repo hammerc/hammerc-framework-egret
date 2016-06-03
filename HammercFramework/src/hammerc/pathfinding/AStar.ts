@@ -71,7 +71,7 @@ module hammerc {
         private _nowCheckNum: number = 1;
         private _binaryHeaps: BinaryHeaps<AStarNode>;
         
-        private _path: Array<AStarNode>;
+        private _path: AStarNode[];
         
         /**
          * 创建一个 <code>AStar</code> 对象.
@@ -93,7 +93,7 @@ module hammerc {
         /**
          * 获取最优路径.
          */
-        public get path(): Array<AStarNode> {
+        public get path(): AStarNode[] {
             return this._path.concat();
         }
         
@@ -158,8 +158,8 @@ module hammerc {
             return true;
         }
         
-        private buildPath() {
-            this._path = new Array<AStarNode>();
+        private buildPath(): void {
+            this._path = [];
             var node: AStarNode = this._endNode;
             this._path.push(node);
             while (node != this._startNode) {
@@ -172,7 +172,7 @@ module hammerc {
         /**
          * 清空所有数据.
          */
-        public clear() {
+        public clear(): void {
             this._grid = null;
             this._startNode = null;
             this._endNode = null;

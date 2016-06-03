@@ -28,7 +28,7 @@ module hammerc {
          * 将该类序列化为字节数组.
          * @param output 输出流对象.
          */
-        public writeExternal(output: egret.ByteArray) {
+        public writeExternal(output: egret.ByteArray): void {
             output.endian = Struct.STRUCT_ENDIAN;
             this.writeToBytes(output);
         }
@@ -37,14 +37,14 @@ module hammerc {
          * 编码本对象.
          * @param output 输出流对象.
          */
-        protected writeToBytes(output: egret.ByteArray) {
+        protected writeToBytes(output: egret.ByteArray): void {
         }
         
         /**
          * 从字节数组中读取该类.
          * @param input 输入流对象.
          */
-        public readExternal(input: egret.ByteArray) {
+        public readExternal(input: egret.ByteArray): void {
             input.endian = Struct.STRUCT_ENDIAN;
             this.readFromBytes(input);
         }
@@ -53,7 +53,7 @@ module hammerc {
          * 解码本对象.
          * @param input 输入流对象.
          */
-        protected readFromBytes(input: egret.ByteArray) {
+        protected readFromBytes(input: egret.ByteArray): void {
         }
     }
 }

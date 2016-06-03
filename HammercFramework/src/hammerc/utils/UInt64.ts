@@ -52,7 +52,7 @@ module hammerc {
          * @param output 要写入的字节流.
          * @param value 要写入的 64 位的无符号整数.
          */
-        public static writeUnsignedInt64(output: egret.ByteArray, value: UInt64) {
+        public static writeUnsignedInt64(output: egret.ByteArray, value: UInt64): void {
             if (output.endian == egret.Endian.LITTLE_ENDIAN) {
                 output.writeUnsignedInt(value.low);
                 output.writeUnsignedInt(value.high);
