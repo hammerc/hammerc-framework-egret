@@ -43,10 +43,12 @@
     <Content Include="resource\default.res.json" />
     <TypeScriptCompile Include="src\example\DictionaryTest.ts" />
     <TypeScriptCompile Include="src\example\NotificationTest.ts" />
+    <TypeScriptCompile Include="src\hammerc\clock\ClockManager.ts" />
     <TypeScriptCompile Include="src\hammerc\ds\BinaryHeaps.ts" />
     <TypeScriptCompile Include="src\hammerc\notification\NotificationCenter.ts" />
     <TypeScriptCompile Include="src\hammerc\pathfinding\AStar.ts" />
     <TypeScriptCompile Include="src\hammerc\pathfinding\AStarGrid.ts" />
+    <TypeScriptCompile Include="src\hammerc\pathfinding\KeyPointAstar.ts" />
     <TypeScriptCompile Include="src\hammerc\pathfinding\SmoothAStar.ts" />
     <TypeScriptCompile Include="src\hammerc\struct\BytesReader.ts" />
     <TypeScriptCompile Include="src\hammerc\struct\BytesWriter.ts" />
@@ -56,6 +58,7 @@
     <TypeScriptCompile Include="src\hammerc\utils\Dictionary.ts" />
     <TypeScriptCompile Include="src\hammerc\utils\Int64.ts" />
     <TypeScriptCompile Include="src\hammerc\utils\Logger.ts" />
+    <TypeScriptCompile Include="src\hammerc\utils\MathUtil.ts" />
     <TypeScriptCompile Include="src\hammerc\utils\ObjectPool.ts" />
     <TypeScriptCompile Include="src\hammerc\utils\StringUtil.ts" />
     <TypeScriptCompile Include="src\hammerc\utils\UInt64.ts" />
@@ -71,7 +74,6 @@
     <Compile Include="template\runtime\native_require.js" />
     <Compile Include="template\runtime\runtime_loader.js" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <!--Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them.-->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />

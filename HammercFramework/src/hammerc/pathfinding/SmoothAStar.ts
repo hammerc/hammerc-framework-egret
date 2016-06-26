@@ -9,11 +9,11 @@
 
 module hammerc {
     /**
-     * <code>SmoothAStar</code> 类基于 <code>AStar</code> 类实现, 添加了获取平滑路径的功能.
-     * <p><b>注意: </b>该类得到的平滑路径为多个连续或不连续的格子对象, 每个格子对象按直线作为路径, 格子对象都出现在需要拐角处.</p>
+     * <code>SmoothAStar</code> 类基于 <code>KeyPointAStar</code> 类实现, 添加了获取平滑路径的功能.
+     * <p><b>注意: </b>该类得到的路径在关键点路径的基础上去掉额外行走的路径, 更加接近现实的行走.</p>
      * @author wizardc
      */
-    export class SmoothAStar extends AStar {
+    export class SmoothAStar extends KeyPointAStar {
         /**
          * 创建一个 <code>SmoothAStar</code> 对象.
          * @param heuristic 应用的启发函数, 为空则使用曼哈顿启发函数.
@@ -26,33 +26,13 @@ module hammerc {
          * 获取平滑的最优路径.
          */
         public get smoothPath(): AStarNode[] {
-            var path: AStarNode[] = this.path;
+            var path: AStarNode[] = this.keyPointPath;
             if (path == null || path.length < 3) {
                 return path;
             } else {
-                path = this.removeCollinearAStarNode(path);
                 path = this.smoothPathByFloyd(path);
             }
             return path;
-        }
-        
-        private removeCollinearAStarNode(path: AStarNode[]): AStarNode[] {
-            var result: AStarNode[] = [];
-            result.push(path[0]);
-            var offsetX: number = path[0].x - path[1].x;
-            var offsetY: number = path[0].y - path[1].y;
-            var len: number = path.length - 1;
-            var nowIndex: number = 1;
-            while (len > nowIndex) {
-                if ((path[nowIndex].x - path[nowIndex + 1].x) != offsetX || (path[nowIndex].y - path[nowIndex + 1].y) != offsetY) {
-                    result.push(path[nowIndex]);
-                    offsetX = path[nowIndex].x - path[nowIndex + 1].x;
-                    offsetY = path[nowIndex].y - path[nowIndex + 1].y;
-                }
-                nowIndex++;
-            }
-            result.push(path[nowIndex]);
-            return result;
         }
         
         private smoothPathByFloyd(path: AStarNode[]): AStarNode[] {
