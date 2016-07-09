@@ -21,7 +21,7 @@ module hammerc {
          */
         sendNotification(notificationName: string, body?: any, type?: string): void;
     }
-    
+
     /**
      * <code>IObserver</code> 接口定义了观察者对象应有的属性和方法.
      * @author wizardc
@@ -33,7 +33,7 @@ module hammerc {
          */
         notificationHandler(notification: INotification): void;
     }
-    
+
     /**
      * <code>INotification</code> 接口定义了连接 Model 层和 View 层通讯发送的消息体对象应有的属性和方法.
      * @author wizardc
@@ -43,18 +43,18 @@ module hammerc {
          * 获取消息名称.
          */
         name: string;
-        
+
         /**
          * 设置或获取消息的类型.
          */
         type: string;
-        
+
         /**
          * 设置或获取消息的数据.
          */
         body: any;
     }
-    
+
     /**
      * <code>ICommand</code> 接口定义了命令对象应有的属性和方法.
      * <p>命令对象的实例会在接收到指定的消息后被创建, 当 <code>execute</code> 方法执行完成后该对象会被抛弃.</p>
@@ -67,7 +67,7 @@ module hammerc {
          */
         execute(notification: INotification): void;
     }
-    
+
     /**
      * <code>IProxy</code> 接口定义代理类应有的属性和方法.
      * @author wizardc
@@ -77,23 +77,23 @@ module hammerc {
          * 获取代理对象的名称.
          */
         name: string;
-        
+
         /**
          * 设置或获取代理对象持有的数据.
          */
         data: any;
-        
+
         /**
          * 当代理对象注册后会调用该方法.
          */
         onRegister(): void;
-        
+
         /**
          * 当代理对象移除后会调用该方法.
          */
         onRemove(): void;
     }
-    
+
     /**
      * <code>IMediator</code> 接口定义了中介类应有的属性和方法.
      * @author wizardc
@@ -103,22 +103,22 @@ module hammerc {
          * 获取中介对象的名称.
          */
         name: string;
-        
+
         /**
          * 设置或获取该中介对象对应的具体显示对象.
          */
         viewComponent: any;
-        
+
         /**
          * 当中介对象注册后会调用该方法.
          */
         onRegister(): void;
-        
+
         /**
          * 当中介对象移除后会调用该方法.
          */
         onRemove(): void;
-        
+
         /**
          * 获取中介对象感兴趣的消息名称列表.
          * @return 中介对象感兴趣的消息名称列表.

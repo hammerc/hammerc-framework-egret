@@ -19,12 +19,12 @@ module hammerc {
          * 上下左右的移动成本.
          */
         public static STRAIGHT_COST: number = 10;
-        
+
         /**
          * 斜角的移动成本.
          */
         public static DIAG_COST: number = 14;
-        
+
         /**
          * 曼哈顿启发函数.
          * @param node1 第一个节点.
@@ -36,7 +36,7 @@ module hammerc {
             var dy: number = node1.y > node2.y ? node1.y - node2.y : node2.y - node1.y;
             return (dx + dy) * AStar.STRAIGHT_COST;
         }
-        
+
         /**
          * 欧式启发函数.
          * @param node1 第一个节点.
@@ -48,7 +48,7 @@ module hammerc {
             var dy: number = node1.y > node2.y ? node1.y - node2.y : node2.y - node1.y;
             return (dx * dx + dy * dy) * AStar.STRAIGHT_COST;
         }
-        
+
         /**
          * 对角启发函数.
          * @param node1 第一个节点.
@@ -60,19 +60,19 @@ module hammerc {
             var dy: number = node1.y > node2.y ? node1.y - node2.y : node2.y - node1.y;
             return dx > dy ? AStar.DIAG_COST * dy + AStar.STRAIGHT_COST * (dx - dy) : AStar.DIAG_COST * dx + AStar.STRAIGHT_COST * (dy - dx);
         }
-        
+
         private _heuristic: (node1: AStarNode, node2: AStarNode) => number;
-        
+
         protected _grid: AStarGrid;
-        
+
         private _startNode: AStarNode;
         private _endNode: AStarNode;
-        
+
         private _nowCheckNum: number = 1;
         private _binaryHeaps: BinaryHeaps<AStarNode>;
-        
+
         private _path: AStarNode[];
-        
+
         /**
          * 创建一个 <code>AStar</code> 对象.
          * @param heuristic 应用的启发函数, 为空则使用曼哈顿启发函数.
@@ -85,18 +85,18 @@ module hammerc {
                 this._heuristic = heuristic;
             }
         }
-        
+
         private compare(a: AStarNode, b: AStarNode): number {
             return b._f - a._f;
         }
-        
+
         /**
          * 获取最优路径.
          */
         public get path(): AStarNode[] {
             return this._path.concat();
         }
-        
+
         /**
          * 根据传入的地图获取一个最佳路径.
          * @param grid 需要寻路的地图对象.
@@ -114,7 +114,7 @@ module hammerc {
             this._startNode._f = this._startNode._g + this._startNode._h;
             return this.search();
         }
-        
+
         /**
          * 开始对该地图进行搜索.
          * @return 是否可以搜寻到该路径.
@@ -157,7 +157,7 @@ module hammerc {
             this._nowCheckNum++;
             return true;
         }
-        
+
         private buildPath(): void {
             this._path = [];
             var node: AStarNode = this._endNode;
@@ -168,7 +168,7 @@ module hammerc {
             }
             this._path = this._path.reverse();
         }
-        
+
         /**
          * 清空所有数据.
          */

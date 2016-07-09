@@ -21,7 +21,7 @@ module hammerc {
         public static writeBoolean(output: egret.ByteArray, value: boolean): void {
             output.writeByte(value ? 1 : 0);
         }
-        
+
         /**
          * 写入一个 8 位数字.
          * @param output 输出流对象.
@@ -30,7 +30,7 @@ module hammerc {
         public static writeByte(output: egret.ByteArray, value: number): void {
             output.writeByte(value);
         }
-        
+
         /**
          * 写入一个 16 位数字.
          * @param output 输出流对象.
@@ -39,7 +39,7 @@ module hammerc {
         public static writeShort(output: egret.ByteArray, value: number): void {
             output.writeShort(value);
         }
-        
+
         /**
          * 写入一个带符号 32 位数字.
          * @param output 输出流对象.
@@ -48,7 +48,7 @@ module hammerc {
         public static writeInt(output: egret.ByteArray, value: number): void {
             output.writeInt(value);
         }
-        
+
         /**
          * 写入一个无符号 32 位数字.
          * @param output 输出流对象.
@@ -57,7 +57,7 @@ module hammerc {
         public static writeUInt(output: egret.ByteArray, value: number): void {
             output.writeUnsignedInt(value);
         }
-        
+
         /**
          * 写入一个带符号 64 位数字.
          * @param output 输出流对象.
@@ -66,7 +66,7 @@ module hammerc {
         public static writeLong(output: egret.ByteArray, value: Int64): void {
             Int64.writeInt64(output, value);
         }
-        
+
         /**
          * 写入一个无符号 64 位数字.
          * @param output 输出流对象.
@@ -75,7 +75,7 @@ module hammerc {
         public static writeULong(output: egret.ByteArray, value: UInt64): void {
             UInt64.writeUnsignedInt64(output, value);
         }
-        
+
         /**
          * 写入一个 32 位浮点数.
          * @param output 输出流对象.
@@ -84,7 +84,7 @@ module hammerc {
         public static writeFloat(output: egret.ByteArray, value: number): void {
             output.writeFloat(value);
         }
-        
+
         /**
          * 写入一个 64 位浮点数.
          * @param output 输出流对象.
@@ -93,7 +93,7 @@ module hammerc {
         public static writeDouble(output: egret.ByteArray, value: number): void {
             output.writeDouble(value);
         }
-        
+
         /**
          * 写入一个字符串.
          * @param output 输出流对象.
@@ -102,7 +102,7 @@ module hammerc {
         public static writeString(output: egret.ByteArray, value: string): void {
             output.writeUTF(value);
         }
-        
+
         /**
          * 写入一个字节数组.
          * @param output 输出流对象.
@@ -113,7 +113,7 @@ module hammerc {
             output.writeUnsignedInt(value.length);
             output.writeBytes(value);
         }
-        
+
         /**
          * 写入一个自定义数据.
          * @param output 输出流对象.

@@ -17,17 +17,17 @@ module hammerc {
          * 代理 MVC 中所有处理方法的外观对象.
          */
         protected _facade: Facade = Facade.getInstance();
-        
+
         /**
          * 中介对象的名称.
          */
         protected _name: string;
-        
+
         /**
          * 中介对象对应的具体显示对象.
          */
         protected _viewComponent: any;
-        
+
         /**
          * <code>AbstractMediator</code> 类为抽象类, 不能被实例化.
          * @param name 中介对象的名称.
@@ -44,7 +44,7 @@ module hammerc {
         public get name(): string {
             return this._name;
         }
-        
+
         /**
          * 设置或获取该中介对象对应的具体显示对象.
          */
@@ -54,19 +54,19 @@ module hammerc {
         public get viewComponent(): any {
             return this._viewComponent;
         }
-        
+
         /**
          * 当中介对象注册后会调用该方法.
          */
         public onRegister(): void {
         }
-        
+
         /**
          * 当中介对象移除后会调用该方法.
          */
         public onRemove(): void {
         }
-        
+
         /**
          * 获取中介对象感兴趣的消息名称列表.
          * @return 中介对象感兴趣的消息名称列表.

@@ -29,7 +29,7 @@ module hammerc {
             }
             return target;
         }
-        
+
         /**
          * 获取指定位为高位还是低位, 本方法使用 32 位数据.
          * @param target 要设置的数据.
@@ -40,7 +40,7 @@ module hammerc {
             BitUtil.validPosition(position);
             return target == (target | (1 << position));
         }
-        
+
         /**
          * 交换指定位的高低位, 本方法使用 32 位数据.
          * @param target 要设置的数据.
@@ -52,7 +52,7 @@ module hammerc {
             target ^= 1 << position;
             return target;
         }
-        
+
         /**
          * 设置指定位为高位还是低位, 本方法使用 64 位数据.
          * @param target 要设置的数据.
@@ -70,7 +70,7 @@ module hammerc {
             }
             return target;
         }
-        
+
         /**
          * 获取指定位为高位还是低位, 本方法使用 64 位数据.
          * @param target 要设置的数据.
@@ -81,7 +81,7 @@ module hammerc {
             BitUtil.validPosition(position, false);
             return target == (target | (1 << position));
         }
-        
+
         /**
          * 交换指定位的高低位, 本方法使用 64 位数据.
          * @param target 要设置的数据.
@@ -93,7 +93,7 @@ module hammerc {
             target ^= 1 << position;
             return target;
         }
-        
+
         private static validPosition(position: number, bit32: boolean = true): void {
             var maxNum: number = bit32 ? 32 : 64;
             if (position < 0 || position >= maxNum) {

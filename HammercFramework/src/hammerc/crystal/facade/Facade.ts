@@ -14,7 +14,7 @@ module hammerc {
      */
     export class Facade {
         private static _instance: Facade;
-        
+
         /**
          * 获取本类的唯一实例.
          * @return 本类的唯一实例.
@@ -25,7 +25,7 @@ module hammerc {
             }
             return Facade._instance;
         }
-        
+
         /**
          * 记录控制者对象.
          */
@@ -38,12 +38,12 @@ module hammerc {
          * 记录代理管理对象.
          */
         protected _modelManager: ModelManager;
-        
+
         /**
          * 记录中介管理对象.
          */
         protected _viewManager: ViewManager;
-        
+
         /**
          * 本类为单例类不能实例化.
          */
@@ -56,7 +56,7 @@ module hammerc {
             this._modelManager = ModelManager.getInstance();
             this._viewManager = ViewManager.getInstance();
         }
-        
+
         /**
          * 发送一个消息.
          * @param notificationName 消息的名称.
@@ -69,7 +69,7 @@ module hammerc {
             this._provider.notifyObservers(notification);
             Notification.toPool(notification);
         }
-        
+
         /**
          * 注册一个命令类对象映射到对应的消息名称上.
          * @param notificationName 消息名称.
@@ -78,7 +78,7 @@ module hammerc {
         public registerCommand(notificationName: string, commandClass: any): void {
             this._controller.registerCommand(notificationName, commandClass);
         }
-        
+
         /**
          * 判断一个消息名称是否正在被侦听.
          * @param notificationName 消息名称.
@@ -86,7 +86,7 @@ module hammerc {
         public hasCommand(notificationName: string): boolean {
             return this._controller.hasCommand(notificationName);
         }
-        
+
         /**
          * 移除一个消息名称的所有侦听.
          * @param notificationName 消息名称.
@@ -94,7 +94,7 @@ module hammerc {
         public removeCommand(notificationName: string): void {
             this._controller.removeCommand(notificationName);
         }
-        
+
         /**
          * 注册一个观察者对象映射到对应的消息名称上.
          * @param notificationName 消息名称.
@@ -103,7 +103,7 @@ module hammerc {
         public registerObserver(notificationName: string, observer: IObserver): void {
             this._provider.registerObserver(notificationName, observer);
         }
-        
+
         /**
          * 移除一个观察者对象的侦听.
          * @param notificationName 消息名称.
@@ -112,7 +112,7 @@ module hammerc {
         public removeObserver(notificationName: string, observer: IObserver): void {
             this._provider.removeObserver(notificationName, observer);
         }
-        
+
         /**
          * 注册一个代理对象.
          * @param proxy 要被注册的代理对象.
@@ -120,7 +120,7 @@ module hammerc {
         public registerProxy(proxy: IProxy): void {
             this._modelManager.registerProxy(proxy);
         }
-        
+
         /**
          * 判断一个代理对象是否被注册.
          * @param proxyName 代理对象名称.
@@ -129,7 +129,7 @@ module hammerc {
         public hasProxy(proxyName: string): boolean {
             return this._modelManager.hasProxy(proxyName);
         }
-        
+
         /**
          * 获取一个代理对象.
          * @param proxyName 代理对象名称.
@@ -138,7 +138,7 @@ module hammerc {
         public getProxy(proxyName: string): IProxy {
             return this._modelManager.getProxy(proxyName);
         }
-        
+
         /**
          * 移除一个代理对象.
          * @param proxyName 代理对象名称.
@@ -147,7 +147,7 @@ module hammerc {
         public removeProxy(proxyName: string): IProxy {
             return this._modelManager.removeProxy(proxyName);
         }
-        
+
         /**
          * 注册一个中介对象.
          * @param mediator 要被注册的中介对象.
@@ -155,7 +155,7 @@ module hammerc {
         public registerMediator(mediator: IMediator): void {
             this._viewManager.registerMediator(mediator);
         }
-        
+
         /**
          * 判断一个中介对象是否被注册.
          * @param mediatorName 中介对象名称.
@@ -164,7 +164,7 @@ module hammerc {
         public hasMediator(mediatorName: string): boolean {
             return this._viewManager.hasMediator(mediatorName);
         }
-        
+
         /**
          * 获取一个中介对象.
          * @param mediatorName 中介对象名称.
@@ -173,7 +173,7 @@ module hammerc {
         public getMediator(mediatorName: string): IMediator {
             return this._viewManager.getMediator(mediatorName);
         }
-        
+
         /**
          * 移除一个中介对象.
          * @param mediatorName 中介对象名称.

@@ -17,7 +17,7 @@ module hammerc {
          * 记录需要顺序执行的命令类列表.
          */
         protected _subCommands: any[];
-        
+
         /**
          * <code>CommandQueue</code> 类为抽象类, 不能被实例化.
          */
@@ -25,13 +25,13 @@ module hammerc {
             this._subCommands = [];
             this.initializeCommands();
         }
-        
+
         /**
          * 初始化命令列表.
          */
         protected initializeCommands(): void {
         }
-        
+
         /**
          * 添加一个需要执行的命令类.
          * @param commandClass 需要执行的命令类.
@@ -39,7 +39,7 @@ module hammerc {
         protected addSubCommand(commandClass: any): void {
             this._subCommands.push(commandClass);
         }
-        
+
         /**
          * 执行具体命令的方法.
          * @param notification 对应的消息对象.

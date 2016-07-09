@@ -44,6 +44,7 @@
     <TypeScriptCompile Include="src\example\DictionaryTest.ts" />
     <TypeScriptCompile Include="src\example\NotificationTest.ts" />
     <TypeScriptCompile Include="src\hammerc\clock\ClockManager.ts" />
+    <TypeScriptCompile Include="src\hammerc\core\Injector.ts" />
     <TypeScriptCompile Include="src\hammerc\crystal\control\command\Command.ts" />
     <TypeScriptCompile Include="src\hammerc\crystal\control\command\CommandQueue.ts" />
     <TypeScriptCompile Include="src\hammerc\crystal\control\Controller.ts" />

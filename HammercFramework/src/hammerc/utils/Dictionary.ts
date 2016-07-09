@@ -17,7 +17,7 @@ module hammerc {
         private _map: Object;
         private _keyMap: Object;
         private _size: number;
-        
+
         /**
          * 创建一个 <code>Dictionary</code> 对象.
          * @param map 初始化时的键值对对象.
@@ -27,21 +27,21 @@ module hammerc {
             this._keyMap = {};
             this._size = 0;
         }
-        
+
         /**
          * 获取当前保存的键值对数量.
          */
         public get size(): number {
             return this._size;
         }
-        
+
         private getKey(key: TKey): string {
             if ((<any>(key)) instanceof egret.HashObject) {
                 return (<egret.HashObject>(<any>(key))).hashCode.toString();
             }
             return key.toString();
         }
-        
+
         /**
          * 添加数据.
          * @param key 键.
@@ -55,7 +55,7 @@ module hammerc {
             this._map[k] = value;
             this._keyMap[k] = key;
         }
-        
+
         /**
          * 判断是否存在数据.
          * @param key 键.
@@ -65,7 +65,7 @@ module hammerc {
             var k: string = this.getKey(key);
             return this._map.hasOwnProperty(k);
         }
-        
+
         /**
          * 获取数据.
          * @param key 键.
@@ -75,7 +75,7 @@ module hammerc {
             var k: string = this.getKey(key);
             return this._map[k];
         }
-        
+
         /**
          * 遍历当前哈希表
          * @param callbackfn 每项的回调.
@@ -88,7 +88,7 @@ module hammerc {
                 }
             }
         }
-        
+
         /**
          * 移除数据.
          * @param key 键.
@@ -104,7 +104,7 @@ module hammerc {
             --this._size;
             return true;
         }
-        
+
         /**
          * 清除哈希表.
          */
@@ -113,7 +113,7 @@ module hammerc {
             this._keyMap = {};
             this._size = 0;
         }
-        
+
         /**
          * 获取本对象的字符串表示形式.
          * @returns 本对象的字符串表示形式.
@@ -127,7 +127,7 @@ module hammerc {
             }
             return "{" + result.join(", ") + "}";
         }
-        
+
         /**
          * 获取实际进行哈希存储的对象.
          * @returns 实际进行哈希存储的对象.

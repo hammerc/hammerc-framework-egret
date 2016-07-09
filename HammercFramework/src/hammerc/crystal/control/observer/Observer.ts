@@ -19,7 +19,7 @@ module hammerc {
         public constructor() {
             super();
         }
-        
+
         /**
          * 当有消息到达时会执行该方法处理消息对象.
          * @param notification 对应的消息对象.

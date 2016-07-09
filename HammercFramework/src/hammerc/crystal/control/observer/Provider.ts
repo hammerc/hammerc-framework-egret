@@ -14,7 +14,7 @@ module hammerc {
      */
     export class Provider {
         private static _instance: Provider;
-        
+
         /**
          * 获取本类的唯一实例.
          * @return 本类的唯一实例.
@@ -25,9 +25,9 @@ module hammerc {
             }
             return Provider._instance;
         }
-        
+
         private _observerMap: Object;
-        
+
         /**
          * 本类为单例类不能实例化.
          */
@@ -37,7 +37,7 @@ module hammerc {
             }
             this._observerMap = new Object();
         }
-        
+
         /**
          * 注册一个观察者对象映射到对应的消息名称上.
          * @param notificationName 消息名称.
@@ -54,7 +54,7 @@ module hammerc {
                 }
             }
         }
-        
+
         /**
          * 移除一个观察者对象的侦听.
          * @param notificationName 消息名称.
@@ -76,7 +76,7 @@ module hammerc {
                 }
             }
         }
-        
+
         /**
          * 通知一个消息.
          * @param notification 需要通知的消息对象.

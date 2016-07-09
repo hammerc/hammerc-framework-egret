@@ -14,7 +14,7 @@ module hammerc {
      */
     export class ModelManager {
         private static _instance: ModelManager;
-        
+
         /**
          * 获取本类的唯一实例.
          * @return 本类的唯一实例.
@@ -25,9 +25,9 @@ module hammerc {
             }
             return ModelManager._instance;
         }
-        
+
         private _proxyMap: Object;
-        
+
         /**
          * 本类为单例类不能实例化.
          */
@@ -37,7 +37,7 @@ module hammerc {
             }
             this._proxyMap = new Object();
         }
-        
+
         /**
          * 注册一个代理对象.
          * @param proxy 要被注册的代理对象.
@@ -49,7 +49,7 @@ module hammerc {
             this._proxyMap[proxy.name] = proxy;
             proxy.onRegister();
         }
-        
+
         /**
          * 判断一个代理对象是否被注册.
          * @param proxyName 代理对象名称.
@@ -58,7 +58,7 @@ module hammerc {
         public hasProxy(proxyName: string): boolean {
             return this._proxyMap.hasOwnProperty(proxyName);
         }
-        
+
         /**
          * 获取一个代理对象.
          * @param proxyName 代理对象名称.
@@ -67,7 +67,7 @@ module hammerc {
         public getProxy(proxyName: string): IProxy {
             return this._proxyMap[proxyName];
         }
-        
+
         /**
          * 移除一个代理对象.
          * @param proxyName 代理对象名称.

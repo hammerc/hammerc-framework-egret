@@ -17,13 +17,13 @@ module hammerc {
          * 自定义数据类的编码字节序.
          */
         public static STRUCT_ENDIAN: string = egret.Endian.BIG_ENDIAN;
-        
+
         /**
          * 创建一个 <code>Struct</code> 对象.
          */
         public constructor() {
         }
-        
+
         /**
          * 将该类序列化为字节数组.
          * @param output 输出流对象.
@@ -32,14 +32,14 @@ module hammerc {
             output.endian = Struct.STRUCT_ENDIAN;
             this.writeToBytes(output);
         }
-        
+
         /**
          * 编码本对象.
          * @param output 输出流对象.
          */
         protected writeToBytes(output: egret.ByteArray): void {
         }
-        
+
         /**
          * 从字节数组中读取该类.
          * @param input 输入流对象.
@@ -48,7 +48,7 @@ module hammerc {
             input.endian = Struct.STRUCT_ENDIAN;
             this.readFromBytes(input);
         }
-        
+
         /**
          * 解码本对象.
          * @param input 输入流对象.

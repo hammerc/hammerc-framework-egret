@@ -17,42 +17,42 @@ module hammerc {
          * 设置或获取当前时钟管理器是否暂停.
          */
         paused: boolean;
-        
+
         /**
          * 设置或获取时钟运行的速率.
          */
         runningRate: number;
-        
+
         /**
          * 获取当前的时间.
          */
         time: number;
-        
+
         /**
          * 添加一个时钟对象.
          * @param client 时钟对象.
          */
         addClockClient(client: IClockClient);
-        
+
         /**
          * 判断指定的时钟对象是否存在.
          * @param client 时钟对象.
          * @return 指定的时钟对象是否存在.
          */
         hasClockClient(client: IClockClient): boolean;
-        
+
         /**
          * 移除一个时钟对象.
          * @param client 时钟对象.
          */
         removeClockClient(client: IClockClient);
-        
+
         /**
          * 移除所有的时钟对象.
          */
         clear();
     }
-    
+
     /**
      * <code>IClockClient</code> 接口定义了时钟对象应有的属性及方法.
      * @author wizardc
@@ -64,7 +64,7 @@ module hammerc {
          */
         update(passedTime: number);
     }
-    
+
     /**
      * <code>ClockManagerImpl</code> 类实现了一个时钟管理器对象.
      * @author wizardc
@@ -78,13 +78,13 @@ module hammerc {
         private _lastTime: number = 0;
 
         private _clientList: IClockClient[];
-        
+
         /**
          * 创建一个 <code>ClockManagerImpl</code> 对象.
          */
         public constructor() {
         }
-        
+
         /**
          * 设置或获取当前时钟管理器是否暂停.
          */
@@ -94,7 +94,7 @@ module hammerc {
         public get paused(): boolean {
             return this._paused;
         }
-        
+
         /**
          * 设置或获取时钟运行的速率.
          */
@@ -107,14 +107,14 @@ module hammerc {
         public get runningRate(): number {
             return this._runningRate;
         }
-        
+
         /**
          * 获取当前的时间.
          */
         public get time(): number {
             return this._lastTime;
         }
-        
+
         /**
          * 添加一个时钟对象.
          * @param client 时钟对象.
@@ -128,7 +128,7 @@ module hammerc {
                 this._clientList.push(client);
             }
         }
-        
+
         /**
          * 初始化方法.
          */
@@ -175,7 +175,7 @@ module hammerc {
             }
             return false;
         }
-        
+
         /**
          * 判断指定的时钟对象是否存在.
          * @param client 时钟对象.
@@ -184,7 +184,7 @@ module hammerc {
         public hasClockClient(client: IClockClient): boolean {
             return this._clientList.indexOf(client) != -1;
         }
-        
+
         /**
          * 移除一个时钟对象.
          * @param client 时钟对象.
@@ -195,7 +195,7 @@ module hammerc {
                 this._clientList[index] = null;
             }
         }
-        
+
         /**
          * 移除所有的时钟对象.
          */

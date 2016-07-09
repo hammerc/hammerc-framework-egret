@@ -21,7 +21,7 @@ module hammerc {
         public constructor(heuristic: (node1: AStarNode, node2: AStarNode) => number = null) {
             super(heuristic);
         }
-        
+
         /**
          * 获取平滑的最优路径.
          */
@@ -34,7 +34,7 @@ module hammerc {
             }
             return path;
         }
-        
+
         private smoothPathByFloyd(path: AStarNode[]): AStarNode[] {
             var result: AStarNode[] = [];
             result.push(path[0]);
@@ -53,7 +53,7 @@ module hammerc {
             result.push(path[path.length - 1]);
             return result;
         }
-        
+
         private hasObstacle(node1: AStarNode, node2: AStarNode): boolean {
             var dx: number = node1.x - node2.x;
             dx = dx < 0 ? -dx : dx;
@@ -71,7 +71,7 @@ module hammerc {
                 return this.otherHasObstacle(dx, dy, node1, node2);
             }
         }
-        
+
         private verticalHasObstacle(node1: AStarNode, node2: AStarNode): boolean {
             var col: number = node1.x;
             var minRow: number = node1.y > node2.y ? node2.y : node1.y;
@@ -83,7 +83,7 @@ module hammerc {
             }
             return false;
         }
-        
+
         private horizontalHasObstacle(node1: AStarNode, node2: AStarNode): boolean {
             var row: number = node1.y;
             var minCol: number = node1.x > node2.x ? node2.x : node1.x;
@@ -95,7 +95,7 @@ module hammerc {
             }
             return false;
         }
-        
+
         private slopeHasObstacle(node1: AStarNode, node2: AStarNode): boolean {
             var leftNode: AStarNode = node1.x > node2.x ? node2 : node1;
             var rightNode: AStarNode = node1.x > node2.x ? node1 : node2;
@@ -123,7 +123,7 @@ module hammerc {
             }
             return false;
         }
-        
+
         private otherHasObstacle(dx: number, dy: number, node1: AStarNode, node2: AStarNode): boolean {
             var k: number = (node1.y - node2.y) / (node1.x - node2.x);
             var b: number = node1.y - k * node1.x;
@@ -194,7 +194,7 @@ module hammerc {
             }
             return false;
         }
-        
+
         private is4GridCenterPoint(x: number, y: number): boolean {
             if (x % 500 != 0 || y % 500 != 0) {
                 return false;

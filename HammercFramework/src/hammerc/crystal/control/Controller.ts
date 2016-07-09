@@ -14,7 +14,7 @@ module hammerc {
      */
     export class Controller {
         private static _instance: Controller;
-        
+
         /**
          * 获取本类的唯一实例.
          * @return 本类的唯一实例.
@@ -25,9 +25,9 @@ module hammerc {
             }
             return Controller._instance;
         }
-        
+
         private _commandMap: Object;
-        
+
         /**
          * 本类为单例类不能实例化.
          */
@@ -37,7 +37,7 @@ module hammerc {
             }
             this._commandMap = new Object();
         }
-        
+
         /**
          * 注册一个命令类对象映射到对应的消息名称上.
          * @param notificationName 消息名称.
@@ -54,7 +54,7 @@ module hammerc {
                 }
             }
         }
-        
+
         /**
          * 判断一个消息名称是否正在被侦听.
          * @param notificationName 消息名称.
@@ -62,7 +62,7 @@ module hammerc {
         public hasCommand(notificationName: string): boolean {
             return this._commandMap.hasOwnProperty(notificationName);
         }
-        
+
         /**
          * 移除一个消息名称的所有侦听.
          * @param notificationName 消息名称.
@@ -74,7 +74,7 @@ module hammerc {
                 }
             }
         }
-        
+
         /**
          * 执行一个命令.
          * @param notification 包含要被执行的命令和信息的通知对象.

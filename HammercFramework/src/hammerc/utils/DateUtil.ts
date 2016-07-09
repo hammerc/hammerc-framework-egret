@@ -17,17 +17,17 @@ module hammerc {
          * 英文月份表.
          */
         public static MONTHS: string[] = ["January", "February", "March", "May", "June", "July", "August", "September", "October", "November", "December"];
-        
+
         /**
          * 英文星期表.
          */
         public static WEEKS: string[] = ["Sunday", "Monday", "TuesDay", "Wednesday", "Thursday", "Friday", "Saturday"];
-        
+
         /**
          * 中文星期表.
          */
         public static CHINESE_WEEKS: string[] = ["日", "一", "二", "三", "四", "五", "六"];
-        
+
         /**
          * 将一个时间戳转化为日期对象.
          * @param time 自 1970 年 1 月 1 日午夜以来的豪秒数.
@@ -38,7 +38,7 @@ module hammerc {
             date.setTime(timeStamp);
             return date;
         }
-        
+
         /**
          * 将一个 <code>Date</code> 对象格式化为一个指定类型的字符串.
          * @param date 需要转换的日期对象.
@@ -103,7 +103,7 @@ module hammerc {
             result = result.replace(/S/g, second.toString());
             return result;
         }
-        
+
         /**
          * 格式化一个数字为一个时间数, 用于播放器或计时器.
          * @param time 需要格式化的秒数 (单位秒).
@@ -129,7 +129,7 @@ module hammerc {
             result = result.replace(/S/g, second.toString());
             return result;
         }
-        
+
         /**
          * 比较两个时间的差值.
          * @param date1 需要比较的时间 1.

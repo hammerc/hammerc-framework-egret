@@ -21,7 +21,7 @@ module hammerc {
         public static readBoolean(input: egret.ByteArray): boolean {
             return input.readByte() != 0;
         }
-        
+
         /**
          * 读取一个带符号 8 位数字.
          * @param input 输入流对象.
@@ -30,7 +30,7 @@ module hammerc {
         public static readByte(input: egret.ByteArray): number {
             return input.readByte();
         }
-        
+
         /**
          * 读取一个无符号 8 位数字.
          * @param input 输入流对象.
@@ -39,7 +39,7 @@ module hammerc {
         public static readUByte(input: egret.ByteArray): number {
             return input.readUnsignedByte();
         }
-        
+
         /**
          * 读取一个带符号 16 位数字.
          * @param input 输入流对象.
@@ -48,7 +48,7 @@ module hammerc {
         public static readShort(input: egret.ByteArray): number {
             return input.readShort();
         }
-        
+
         /**
          * 读取一个无符号 16 位数字.
          * @param input 输入流对象.
@@ -57,7 +57,7 @@ module hammerc {
         public static readUShort(input: egret.ByteArray): number {
             return input.readUnsignedShort();
         }
-        
+
         /**
          * 读取一个带符号 32 位数字.
          * @param input 输入流对象.
@@ -66,7 +66,7 @@ module hammerc {
         public static readInt(input: egret.ByteArray): number {
             return input.readInt();
         }
-        
+
         /**
          * 读取一个无符号 32 位数字.
          * @param input 输入流对象.
@@ -75,7 +75,7 @@ module hammerc {
         public static readUInt(input: egret.ByteArray): number {
             return input.readUnsignedInt();
         }
-        
+
         /**
          * 读取一个带符号 64 位数字.
          * @param input 输入流对象.
@@ -84,7 +84,7 @@ module hammerc {
         public static readLong(input: egret.ByteArray): Int64 {
             return Int64.readInt64(input);
         }
-        
+
         /**
          * 读取一个无符号 64 位数字.
          * @param input 输入流对象.
@@ -93,7 +93,7 @@ module hammerc {
         public static readULong(input: egret.ByteArray): UInt64 {
             return UInt64.readUnsignedInt64(input);
         }
-        
+
         /**
          * 读取一个 32 位浮点数.
          * @param input 输入流对象.
@@ -102,7 +102,7 @@ module hammerc {
         public static readFloat(input: egret.ByteArray): number {
             return input.readFloat();
         }
-        
+
         /**
          * 读取一个 64 位浮点数.
          * @param input 输入流对象.
@@ -111,7 +111,7 @@ module hammerc {
         public static readDouble(input: egret.ByteArray): number {
             return input.readDouble();
         }
-        
+
         /**
          * 读取一个字符串.
          * @param input 输入流对象.
@@ -120,7 +120,7 @@ module hammerc {
         public static readString(input: egret.ByteArray): string {
             return input.readUTF();
         }
-        
+
         /**
          * 读取一个字节数组.
          * @param input 输入流对象.
@@ -132,7 +132,7 @@ module hammerc {
             input.readBytes(bytes, 0, len);
             return bytes;
         }
-        
+
         /**
          * 读取一个自定义数据.
          * @param input 输入流对象.

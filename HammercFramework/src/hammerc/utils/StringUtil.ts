@@ -33,7 +33,7 @@ module hammerc {
             }
             return str;
         }
-        
+
         /**
          * 判断一个字符串是否以指定的字符串开头.
          * @param string 要判断的字符串.
@@ -43,7 +43,7 @@ module hammerc {
         public static startsWith(str: string, subString: string): boolean {
             return (str.indexOf(subString) == 0);
         }
-        
+
         /**
          * 判断一个字符串是否以指定的字符串结尾.
          * @param string 要判断的字符串.

@@ -15,7 +15,7 @@ module hammerc {
     export class BinaryHeaps<T> {
         private _data: T[];
         private _compare: (a: T, b: T) => number;
-        
+
         /**
          * 创建一个 <code>BinaryHeaps</code> 对象.
          * @param compare 指定比较方法, 用来确定获取的对象值是堆中最大还是最小的值.
@@ -26,21 +26,21 @@ module hammerc {
             this._data = [];
             this._compare = compare;
         }
-        
+
         /**
          * 获取数据长度.
          */
         public get length(): number {
             return this._data.length;
         }
-        
+
         /**
          * 获取数据数组.
          */
         public get data(): T[] {
             return this._data;
         }
-        
+
         /**
          * 加入一个对象.
          * @param obj 要加入的对象.
@@ -61,7 +61,7 @@ module hammerc {
             }
             this._data[objIndex] = temp;
         }
-        
+
         /**
          * 修改一个对象.
          * @param oldObj 已经添加到堆中的对象.
@@ -88,7 +88,7 @@ module hammerc {
             this._data[objIndex] = temp;
             return true;
         }
-        
+
         /**
          * 取出数据最大或最小的对象, 具体规则由 <code>compare</code> 方法指定.
          * @return 数据最大或最小的对象.
@@ -117,14 +117,14 @@ module hammerc {
             this._data[parentIndex] = temp;
             return result;
         }
-        
+
         /**
          * 清空数据.
          */
         public clear(): void {
             this._data = [];
         }
-        
+
         /**
          * 获取本对象的字符串描述.
          * @return 本对象的字符串描述.

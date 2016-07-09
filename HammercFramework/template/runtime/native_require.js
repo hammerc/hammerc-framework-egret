@@ -7,6 +7,7 @@ var game_file_list = [
 	"bin-debug/example/DictionaryTest.js",
 	"bin-debug/example/NotificationTest.js",
 	"bin-debug/hammerc/clock/ClockManager.js",
+	"bin-debug/hammerc/core/Injector.js",
 	"bin-debug/hammerc/crystal/control/Notifier.js",
 	"bin-debug/hammerc/crystal/control/command/Command.js",
 	"bin-debug/hammerc/crystal/control/command/CommandQueue.js",

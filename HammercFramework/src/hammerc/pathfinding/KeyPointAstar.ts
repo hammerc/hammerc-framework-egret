@@ -21,7 +21,7 @@ module hammerc {
         public constructor(heuristic: (node1: AStarNode, node2: AStarNode) => number = null) {
             super(heuristic);
         }
-        
+
         /**
          * 获取关键点路径.
          */

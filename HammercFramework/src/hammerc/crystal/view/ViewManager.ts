@@ -14,7 +14,7 @@ module hammerc {
      */
     export class ViewManager {
         private static _instance: ViewManager;
-        
+
         /**
          * 获取本类的唯一实例.
          * @return 本类的唯一实例.
@@ -25,9 +25,9 @@ module hammerc {
             }
             return ViewManager._instance;
         }
-        
+
         private _mediatorMap: Object;
-        
+
         /**
          * 本类为单例类不能实例化.
          */
@@ -37,7 +37,7 @@ module hammerc {
             }
             this._mediatorMap = new Object();
         }
-        
+
         /**
          * 注册一个中介对象.
          * @param mediator 要被注册的中介对象.
@@ -56,7 +56,7 @@ module hammerc {
             this._mediatorMap[mediator.name] = mediator;
             mediator.onRegister();
         }
-        
+
         /**
          * 判断一个中介对象是否被注册.
          * @param mediatorName 中介对象名称.
@@ -65,7 +65,7 @@ module hammerc {
         public hasMediator(mediatorName: string): boolean {
             return this._mediatorMap.hasOwnProperty(mediatorName);
         }
-        
+
         /**
          * 获取一个中介对象.
          * @param mediatorName 中介对象名称.
@@ -74,7 +74,7 @@ module hammerc {
         public getMediator(mediatorName: string): IMediator {
             return this._mediatorMap[mediatorName];
         }
-        
+
         /**
          * 移除一个中介对象.
          * @param mediatorName 中介对象名称.
