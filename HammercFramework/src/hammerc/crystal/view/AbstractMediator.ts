@@ -71,7 +71,7 @@ module hammerc {
          * 获取中介对象感兴趣的消息名称列表.
          * @return 中介对象感兴趣的消息名称列表.
          */
-        public interestNotificationList(): Array<string> {
+        public interestNotificationList(): string[] {
             return null;
         }
     }

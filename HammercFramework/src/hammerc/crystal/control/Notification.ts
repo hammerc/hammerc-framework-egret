@@ -13,7 +13,7 @@ module hammerc {
      * @author wizardc
      */
     export class Notification implements INotification {
-        private static _pool: Notification[];
+        private static _pool: Notification[] = [];
 
         /**
          * 从对象池中取出一个消息对象.

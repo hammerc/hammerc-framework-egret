@@ -59,6 +59,7 @@
     <TypeScriptCompile Include="src\hammerc\crystal\view\AbstractMediator.ts" />
     <TypeScriptCompile Include="src\hammerc\crystal\view\ViewManager.ts" />
     <TypeScriptCompile Include="src\hammerc\ds\BinaryHeaps.ts" />
+    <TypeScriptCompile Include="src\hammerc\managers\LanguageManager.ts" />
     <TypeScriptCompile Include="src\hammerc\notification\NotificationCenter.ts" />
     <TypeScriptCompile Include="src\hammerc\pathfinding\AStar.ts" />
     <TypeScriptCompile Include="src\hammerc\pathfinding\AStarGrid.ts" />

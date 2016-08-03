@@ -32,7 +32,7 @@ module hammerc {
          * 本类为单例类不能实例化.
          */
         public constructor() {
-            if (Controller.getInstance() != null) {
+            if (Controller._instance != null) {
                 throw new Error("单例类不能进行实例化！");
             }
             this._commandMap = new Object();

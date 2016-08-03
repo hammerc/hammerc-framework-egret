@@ -48,7 +48,7 @@ module hammerc {
          * 本类为单例类不能实例化.
          */
         public constructor() {
-            if (Facade.getInstance() != null) {
+            if (Facade._instance != null) {
                 throw new Error("单例类不能进行实例化！");
             }
             this._controller = Controller.getInstance();

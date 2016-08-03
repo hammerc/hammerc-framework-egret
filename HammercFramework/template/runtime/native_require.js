@@ -22,6 +22,7 @@ var game_file_list = [
 	"bin-debug/hammerc/crystal/view/AbstractMediator.js",
 	"bin-debug/hammerc/crystal/view/ViewManager.js",
 	"bin-debug/hammerc/ds/BinaryHeaps.js",
+	"bin-debug/hammerc/managers/LanguageManager.js",
 	"bin-debug/hammerc/notification/NotificationCenter.js",
 	"bin-debug/hammerc/pathfinding/AStar.js",
 	"bin-debug/hammerc/pathfinding/AStarGrid.js",
