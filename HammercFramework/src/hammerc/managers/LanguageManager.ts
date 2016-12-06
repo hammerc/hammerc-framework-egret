@@ -105,7 +105,7 @@ module hammerc {
                     return StringUtil.substitute.apply(null, [text].concat(args));
                 }
             }
-            return null;
+            return language + "#" + key;
         }
 
         /**
