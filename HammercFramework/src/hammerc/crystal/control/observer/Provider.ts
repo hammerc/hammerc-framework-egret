@@ -31,10 +31,7 @@ module hammerc {
         /**
          * 本类为单例类不能实例化.
          */
-        public constructor() {
-            if (Provider._instance != null) {
-                throw new Error("单例类不能进行实例化！");
-            }
+        private constructor() {
             this._observerMap = new Object();
         }
 

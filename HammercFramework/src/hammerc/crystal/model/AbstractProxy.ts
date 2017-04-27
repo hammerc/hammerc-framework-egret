@@ -12,7 +12,7 @@ module hammerc {
      * <code>AbstractProxy</code> 类实现了代理的基类.
      * @author wizardc
      */
-    export class AbstractProxy extends Notifier implements IProxy {
+    export abstract class AbstractProxy extends Notifier implements IProxy {
         /**
          * 代理 MVC 中所有处理方法的外观对象.
          */

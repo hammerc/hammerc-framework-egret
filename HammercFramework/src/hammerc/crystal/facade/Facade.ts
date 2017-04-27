@@ -47,10 +47,7 @@ module hammerc {
         /**
          * 本类为单例类不能实例化.
          */
-        public constructor() {
-            if (Facade._instance != null) {
-                throw new Error("单例类不能进行实例化！");
-            }
+        private constructor() {
             this._controller = Controller.getInstance();
             this._provider = Provider.getInstance();
             this._modelManager = ModelManager.getInstance();
@@ -157,30 +154,30 @@ module hammerc {
         }
 
         /**
-         * 判断一个中介对象是否被注册.
-         * @param mediatorName 中介对象名称.
-         * @return 指定的中介对象被注册返回 (<code>true</code>), 否则返回 (<code>false</code>).
+         * 判断一个中介对象是否被创建.
+         * @param viewComponent 对应的视图对象.
+         * @return 指定的中介对象被创建返回 (<code>true</code>), 否则返回 (<code>false</code>).
          */
-        public hasMediator(mediatorName: string): boolean {
-            return this._viewManager.hasMediator(mediatorName);
+        public hasMediator(viewComponent: any): boolean {
+            return this._viewManager.hasMediator(viewComponent);
         }
 
         /**
          * 获取一个中介对象.
-         * @param mediatorName 中介对象名称.
+         * @param viewComponent 对应的视图对象.
          * @return 指定的中介对象.
          */
-        public getMediator(mediatorName: string): IMediator {
-            return this._viewManager.getMediator(mediatorName);
+        public getMediator(viewComponent: any): IMediator {
+            return this._viewManager.getMediator(viewComponent);
         }
 
         /**
          * 移除一个中介对象.
-         * @param mediatorName 中介对象名称.
+         * @param viewComponent 对应的视图对象.
          * @return 移除的中介对象.
          */
-        public removeMediator(mediatorName: string): IMediator {
-            return this._viewManager.removeMediator(mediatorName);
+        public removeMediator(viewComponent: any): IMediator {
+            return this._viewManager.removeMediator(viewComponent);
         }
     }
 }

@@ -12,7 +12,7 @@ module hammerc {
      * <code>Observer</code> 类实现了一个简单的观察者.
      * @author wizardc
      */
-    export class Observer extends Notifier implements IObserver {
+    export abstract class Observer extends Notifier implements IObserver {
         /**
          * <code>Observer</code> 类为抽象类, 不能被实例化.
          */

@@ -32,7 +32,7 @@ module hammerc {
          * 添加一个时钟对象.
          * @param client 时钟对象.
          */
-        addClockClient(client: IClockClient);
+        addClockClient(client: IClockClient): void;
 
         /**
          * 判断指定的时钟对象是否存在.
@@ -45,12 +45,12 @@ module hammerc {
          * 移除一个时钟对象.
          * @param client 时钟对象.
          */
-        removeClockClient(client: IClockClient);
+        removeClockClient(client: IClockClient): void;
 
         /**
          * 移除所有的时钟对象.
          */
-        clear();
+        clear(): void;
     }
 
     /**
@@ -62,7 +62,7 @@ module hammerc {
          * 更新方法.
          * @param passedTime 据上次更新经过的时间, 单位豪秒.
          */
-        update(passedTime: number);
+        update(passedTime: number): void;
     }
 
     /**

@@ -26,16 +26,13 @@ module hammerc {
             return ViewManager._instance;
         }
 
-        private _mediatorMap: Object;
+        private _mediatorMap: Dictionary<any, IMediator>;
 
         /**
          * 本类为单例类不能实例化.
          */
-        public constructor() {
-            if (ViewManager._instance != null) {
-                throw new Error("单例类不能进行实例化！");
-            }
-            this._mediatorMap = new Object();
+        private constructor() {
+            this._mediatorMap = new Dictionary<any, IMediator>();
         }
 
         /**
@@ -43,7 +40,7 @@ module hammerc {
          * @param mediator 要被注册的中介对象.
          */
         public registerMediator(mediator: IMediator): void {
-            if (this.hasMediator(mediator.name)) {
+            if (this.hasMediator(mediator.viewComponent)) {
                 throw new Error("需要注册的中介名称已经存在！");
             }
             var list: string[] = mediator.interestNotificationList();
@@ -53,35 +50,35 @@ module hammerc {
                     Provider.getInstance().registerObserver(notificationName, mediator);
                 }
             }
-            this._mediatorMap[mediator.name] = mediator;
+            this._mediatorMap.add(mediator.viewComponent, mediator);
             mediator.onRegister();
         }
 
         /**
-         * 判断一个中介对象是否被注册.
-         * @param mediatorName 中介对象名称.
-         * @return 指定的中介对象被注册返回 (<code>true</code>), 否则返回 (<code>false</code>).
+         * 判断一个中介对象是否被创建.
+         * @param viewComponent 对应的视图对象.
+         * @return 指定的中介对象被创建返回 (<code>true</code>), 否则返回 (<code>false</code>).
          */
-        public hasMediator(mediatorName: string): boolean {
-            return this._mediatorMap.hasOwnProperty(mediatorName);
+        public hasMediator(viewComponent: any): boolean {
+            return this._mediatorMap.has(viewComponent);
         }
 
         /**
          * 获取一个中介对象.
-         * @param mediatorName 中介对象名称.
+         * @param viewComponent 对应的视图对象.
          * @return 指定的中介对象.
          */
-        public getMediator(mediatorName: string): IMediator {
-            return this._mediatorMap[mediatorName];
+        public getMediator(viewComponent: any): IMediator {
+            return this._mediatorMap.get(viewComponent);
         }
 
         /**
          * 移除一个中介对象.
-         * @param mediatorName 中介对象名称.
+         * @param viewComponent 对应的视图对象.
          * @return 移除的中介对象.
          */
-        public removeMediator(mediatorName: string): IMediator {
-            var mediator: IMediator = this.getMediator(mediatorName);
+        public removeMediator(viewComponent: any): IMediator {
+            var mediator: IMediator = this.getMediator(viewComponent);
             if (mediator != null) {
                 var list: string[] = mediator.interestNotificationList();
                 if (list != null && list.length != 0) {
@@ -91,7 +88,7 @@ module hammerc {
                     }
                 }
                 mediator.onRemove();
-                delete this._mediatorMap[mediatorName];
+                this._mediatorMap.remove(viewComponent);
             }
             return mediator;
         }

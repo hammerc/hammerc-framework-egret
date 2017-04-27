@@ -1,1 +1,0 @@
-"C:\Users\wizardc\AppData\Roaming\npm\egret.cmd" %*

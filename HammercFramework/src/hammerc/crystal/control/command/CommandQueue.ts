@@ -12,7 +12,7 @@ module hammerc {
      * <code>CommandQueue</code> 类实现了多个命令顺序执行的命令列表类.
      * @author wizardc
      */
-    export class CommandQueue implements ICommand {
+    export abstract class CommandQueue implements ICommand {
         /**
          * 记录需要顺序执行的命令类列表.
          */
@@ -29,8 +29,7 @@ module hammerc {
         /**
          * 初始化命令列表.
          */
-        protected initializeCommands(): void {
-        }
+        protected abstract initializeCommands(): void;
 
         /**
          * 添加一个需要执行的命令类.

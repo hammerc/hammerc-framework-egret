@@ -12,7 +12,7 @@ module hammerc {
      * <code>AbstractMediator</code> 类实现了中介的基类.
      * @author wizardc
      */
-    export class AbstractMediator extends Observer implements IMediator {
+    export abstract class AbstractMediator extends Observer implements IMediator {
         /**
          * 代理 MVC 中所有处理方法的外观对象.
          */
@@ -38,6 +38,7 @@ module hammerc {
             this._name = name;
             this._viewComponent = viewComponent;
         }
+
         /**
          * 获取中介对象的名称.
          */

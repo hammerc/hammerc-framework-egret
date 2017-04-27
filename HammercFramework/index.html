@@ -24,6 +24,7 @@
     <!--modules_files_start-->
 	<script egret="lib" src="libs/modules/egret/egret.js" src-release="libs/modules/egret/egret.min.js"></script>
 	<script egret="lib" src="libs/modules/egret/egret.web.js" src-release="libs/modules/egret/egret.web.min.js"></script>
+	<script egret="lib" src="libs/modules/res/res.js" src-release="libs/modules/res/res.min.js"></script>
 	<!--modules_files_end-->
 
     <!--这个标签为不通过egret提供的第三方库的方式使用的 javascript 文件，请将这些文件放在libs下，但不要放在modules下面。-->
@@ -32,16 +33,16 @@
 
     <!--这个标签会被替换为项目中所有的 javascript 文件。删除 game_files 标签后，项目文件加载列表将不会变化，请谨慎操作！-->
     <!--game_files_start-->
-	<script egret="game" src="bin-debug/example/DictionaryTest.js"></script>
-	<script egret="game" src="bin-debug/example/NotificationTest.js"></script>
-	<script egret="game" src="bin-debug/hammerc/clock/ClockManager.js"></script>
-	<script egret="game" src="bin-debug/hammerc/core/Injector.js"></script>
 	<script egret="game" src="bin-debug/hammerc/crystal/control/Notifier.js"></script>
-	<script egret="game" src="bin-debug/hammerc/crystal/control/command/Command.js"></script>
-	<script egret="game" src="bin-debug/hammerc/crystal/control/command/CommandQueue.js"></script>
+	<script egret="game" src="bin-debug/hammerc/pathfinding/AStar.js"></script>
+	<script egret="game" src="bin-debug/hammerc/clock/ClockManager.js"></script>
+	<script egret="game" src="bin-debug/hammerc/crystal/control/observer/Observer.js"></script>
+	<script egret="game" src="bin-debug/hammerc/pathfinding/KeyPointAstar.js"></script>
+	<script egret="game" src="bin-debug/hammerc/notification/NotificationCenter.js"></script>
 	<script egret="game" src="bin-debug/hammerc/crystal/control/Controller.js"></script>
 	<script egret="game" src="bin-debug/hammerc/crystal/control/Notification.js"></script>
-	<script egret="game" src="bin-debug/hammerc/crystal/control/observer/Observer.js"></script>
+	<script egret="game" src="bin-debug/example/DictionaryTest.js"></script>
+	<script egret="game" src="bin-debug/hammerc/core/Injector.js"></script>
 	<script egret="game" src="bin-debug/hammerc/crystal/control/observer/Provider.js"></script>
 	<script egret="game" src="bin-debug/hammerc/crystal/facade/Facade.js"></script>
 	<script egret="game" src="bin-debug/hammerc/crystal/interfaces/Interfaces.js"></script>
@@ -51,11 +52,12 @@
 	<script egret="game" src="bin-debug/hammerc/crystal/view/ViewManager.js"></script>
 	<script egret="game" src="bin-debug/hammerc/ds/BinaryHeaps.js"></script>
 	<script egret="game" src="bin-debug/hammerc/managers/LanguageManager.js"></script>
-	<script egret="game" src="bin-debug/hammerc/notification/NotificationCenter.js"></script>
-	<script egret="game" src="bin-debug/hammerc/pathfinding/AStar.js"></script>
+	<script egret="game" src="bin-debug/example/NotificationTest.js"></script>
+	<script egret="game" src="bin-debug/hammerc/crystal/control/command/Command.js"></script>
 	<script egret="game" src="bin-debug/hammerc/pathfinding/AStarGrid.js"></script>
-	<script egret="game" src="bin-debug/hammerc/pathfinding/KeyPointAstar.js"></script>
+	<script egret="game" src="bin-debug/hammerc/crystal/control/command/CommandQueue.js"></script>
 	<script egret="game" src="bin-debug/hammerc/pathfinding/SmoothAStar.js"></script>
+	<script egret="game" src="bin-debug/hammerc/sound/SoundManager.js"></script>
 	<script egret="game" src="bin-debug/hammerc/struct/BytesReader.js"></script>
 	<script egret="game" src="bin-debug/hammerc/struct/BytesWriter.js"></script>
 	<script egret="game" src="bin-debug/hammerc/struct/Struct.js"></script>
