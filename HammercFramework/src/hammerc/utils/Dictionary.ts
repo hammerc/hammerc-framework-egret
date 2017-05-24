@@ -7,7 +7,7 @@
 //
 // =================================================================================================
 
-module hammerc {
+namespace hammerc {
     /**
      * <code>Dictionary</code> 类提供泛型哈希表的支持.
      * <p>如果 key 使用继承 egret.HashObject 的对象, 则使用 hashCode 作为其键值, 否则使用 toString() 的返回作为键值.</p>

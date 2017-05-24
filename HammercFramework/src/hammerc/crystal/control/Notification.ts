@@ -7,7 +7,7 @@
 //
 // =================================================================================================
 
-module hammerc {
+namespace hammerc {
     /**
      * <code>Notification</code> 类实现了一个最简单的消息对象.
      * @author wizardc

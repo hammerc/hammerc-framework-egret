@@ -7,7 +7,7 @@
 //
 // =================================================================================================
 
-module hammerc {
+namespace hammerc {
     /**
      * <code>ObjectPool</code> 类定义了对象池对象.
      * @author wizardc

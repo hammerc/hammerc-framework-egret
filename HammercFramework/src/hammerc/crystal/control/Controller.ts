@@ -7,7 +7,7 @@
 //
 // =================================================================================================
 
-module hammerc {
+namespace hammerc {
     /**
      * <code>Contorller</code> 类是整个 MVC 框架中的控制者, 它是一个单例类, 为模块或视图广播命令 <code>ICommand</code> 对象接收并处理命令提供支持.
      * @author wizardc

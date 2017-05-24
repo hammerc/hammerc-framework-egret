@@ -7,7 +7,7 @@
 //
 // =================================================================================================
 
-module hammerc {
+namespace hammerc {
     /**
      * <code>LanguageManager</code> 类提供多语言管理的支持.
      * <ul><code>addLanguage</code> 方法中的 <code>content</code> 传入的语言内容文本须符合下面的规定：

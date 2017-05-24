@@ -1,4 +1,4 @@
-﻿module example {
+﻿namespace example {
     export class NotificationTest {
         private _num: number = 0;
 

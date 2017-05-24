@@ -7,7 +7,7 @@
 //
 // =================================================================================================
 
-module hammerc {
+namespace hammerc {
     /**
      * <code>NotificationCenter</code> 类实现了消息通知功能.
      * @author wizardc

@@ -7,7 +7,7 @@
 //
 // =================================================================================================
 
-module hammerc {
+namespace hammerc {
     /**
      * <code>AbstractMediator</code> 类实现了中介的基类.
      * @author wizardc

@@ -7,7 +7,7 @@
 //
 // =================================================================================================
 
-module hammerc {
+namespace hammerc {
     /**
      * <code>AbstractProxy</code> 类实现了代理的基类.
      * @author wizardc

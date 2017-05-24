@@ -7,7 +7,7 @@
 //
 // =================================================================================================
 
-module hammerc {
+namespace hammerc {
     /**
      * <code>BinaryHeaps</code> 类实现了二叉堆.
      * @author wizardc

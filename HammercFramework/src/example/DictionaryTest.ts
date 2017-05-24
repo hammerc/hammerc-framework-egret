@@ -1,4 +1,4 @@
-﻿module example {
+﻿namespace example {
     export class DictionaryTest {
         public constructor() {
             //普通使用测试
