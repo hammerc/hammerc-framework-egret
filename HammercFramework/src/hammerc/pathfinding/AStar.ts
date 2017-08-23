@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>AStar</code> 类提供了基本的 A 星寻路功能.
+     * AStar 类提供了基本的 A 星寻路功能.
      * <p>该类基于《Flash ActionScript 3.0 动画高级教程》一书中寻路章节的脚本改写, 并对寻路效率进行了特别优化.</p>
      * <p><b>注意: </b>该类得到的最短路径为一个个连续的格子对象, 该路径并非为平滑的最佳最短路径.</p>
      * @author wizardc
@@ -74,7 +74,7 @@ namespace hammerc {
         private _path: AStarNode[];
 
         /**
-         * 创建一个 <code>AStar</code> 对象.
+         * 创建一个 AStar 对象.
          * @param heuristic 应用的启发函数, 为空则使用曼哈顿启发函数.
          */
         public constructor(heuristic: (node1: AStarNode, node2: AStarNode) => number = null) {

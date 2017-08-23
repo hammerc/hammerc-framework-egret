@@ -9,14 +9,14 @@
 
 namespace hammerc {
     /**
-     * <code>AbstractProxy</code> 类实现了代理的基类.
+     * AbstractProxy 类实现了代理的基类.
      * @author wizardc
      */
     export abstract class AbstractProxy extends Notifier implements IProxy {
         /**
          * 代理 MVC 中所有处理方法的外观对象.
          */
-        protected _facade: Facade = Facade.getInstance();
+        protected _facade: Facade = Facade.instance;
 
         /**
          * 代理对象的名称.
@@ -29,7 +29,7 @@ namespace hammerc {
         protected _data: any;
 
         /**
-         * <code>AbstractProxy</code> 类为抽象类, 不能被实例化.
+         * AbstractProxy 类为抽象类, 不能被实例化.
          * @param name 代理对象的名称.
          * @param data 代理对象持有的数据.
          */

@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>BytesWriter</code> 类提供写入数据到字节流中的功能.
+     * BytesWriter 类提供写入数据到字节流中的功能.
      * @author wizardc
      */
     export class BytesWriter {

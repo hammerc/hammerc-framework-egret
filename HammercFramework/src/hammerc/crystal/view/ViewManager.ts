@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>ViewManager</code> 类管理程序中使用到的所有中介对象.
+     * ViewManager 类管理程序中使用到的所有中介对象.
      * @author wizardc
      */
     export class ViewManager {
@@ -19,11 +19,8 @@ namespace hammerc {
          * 获取本类的唯一实例.
          * @return 本类的唯一实例.
          */
-        public static getInstance(): ViewManager {
-            if (ViewManager._instance == null) {
-                ViewManager._instance = new ViewManager();
-            }
-            return ViewManager._instance;
+        public static get instance(): ViewManager {
+            return ViewManager._instance || (ViewManager._instance = new ViewManager());
         }
 
         private _mediatorMap: Dictionary<any, IMediator>;
@@ -47,7 +44,7 @@ namespace hammerc {
             if (list != null && list.length != 0) {
                 for (var key in list) {
                     var notificationName: string = list[key];
-                    Provider.getInstance().registerObserver(notificationName, mediator);
+                    Provider.instance.registerObserver(notificationName, mediator);
                 }
             }
             this._mediatorMap.add(mediator.viewComponent, mediator);
@@ -57,7 +54,7 @@ namespace hammerc {
         /**
          * 判断一个中介对象是否被创建.
          * @param viewComponent 对应的视图对象.
-         * @return 指定的中介对象被创建返回 (<code>true</code>), 否则返回 (<code>false</code>).
+         * @return 指定的中介对象被创建返回 (true), 否则返回 (false).
          */
         public hasMediator(viewComponent: any): boolean {
             return this._mediatorMap.has(viewComponent);
@@ -84,7 +81,7 @@ namespace hammerc {
                 if (list != null && list.length != 0) {
                     for (var key in list) {
                         var notificationName: string = list[key];
-                        Provider.getInstance().removeObserver(notificationName, mediator);
+                        Provider.instance.removeObserver(notificationName, mediator);
                     }
                 }
                 mediator.onRemove();

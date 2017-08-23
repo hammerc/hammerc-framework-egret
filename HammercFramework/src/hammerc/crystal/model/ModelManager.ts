@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>ModelManager</code> 类管理程序中使用到的所有代理对象.
+     * ModelManager 类管理程序中使用到的所有代理对象.
      * @author wizardc
      */
     export class ModelManager {
@@ -19,11 +19,8 @@ namespace hammerc {
          * 获取本类的唯一实例.
          * @return 本类的唯一实例.
          */
-        public static getInstance(): ModelManager {
-            if (ModelManager._instance == null) {
-                ModelManager._instance = new ModelManager();
-            }
-            return ModelManager._instance;
+        public static get instance(): ModelManager {
+            return ModelManager._instance || (ModelManager._instance = new ModelManager());
         }
 
         private _proxyMap: Object;
@@ -50,7 +47,7 @@ namespace hammerc {
         /**
          * 判断一个代理对象是否被注册.
          * @param proxyName 代理对象名称.
-         * @return 指定的代理对象被注册返回 (<code>true</code>), 否则返回 (<code>false</code>).
+         * @return 指定的代理对象被注册返回 (true), 否则返回 (false).
          */
         public hasProxy(proxyName: string): boolean {
             return this._proxyMap.hasOwnProperty(proxyName);

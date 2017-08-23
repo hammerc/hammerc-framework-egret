@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>BytesReader</code> 类提供从字节流中读取数据的功能.
+     * BytesReader 类提供从字节流中读取数据的功能.
      * @author wizardc
      */
     export class BytesReader {

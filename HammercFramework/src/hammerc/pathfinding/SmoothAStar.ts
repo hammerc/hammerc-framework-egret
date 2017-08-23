@@ -9,13 +9,13 @@
 
 namespace hammerc {
     /**
-     * <code>SmoothAStar</code> 类基于 <code>KeyPointAStar</code> 类实现, 添加了获取平滑路径的功能.
+     * SmoothAStar 类基于 KeyPointAStar 类实现, 添加了获取平滑路径的功能.
      * <p><b>注意: </b>该类得到的路径在关键点路径的基础上去掉额外行走的路径, 更加接近现实的行走.</p>
      * @author wizardc
      */
     export class SmoothAStar extends KeyPointAStar {
         /**
-         * 创建一个 <code>SmoothAStar</code> 对象.
+         * 创建一个 SmoothAStar 对象.
          * @param heuristic 应用的启发函数, 为空则使用曼哈顿启发函数.
          */
         public constructor(heuristic: (node1: AStarNode, node2: AStarNode) => number = null) {

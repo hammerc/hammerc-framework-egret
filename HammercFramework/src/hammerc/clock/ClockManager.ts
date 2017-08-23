@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>IClockManager</code> 接口定义了时钟管理器应有的属性及方法.
+     * IClockManager 接口定义了时钟管理器应有的属性及方法.
      * @author wizardc
      */
     export interface IClockManager {
@@ -54,7 +54,7 @@ namespace hammerc {
     }
 
     /**
-     * <code>IClockClient</code> 接口定义了时钟对象应有的属性及方法.
+     * IClockClient 接口定义了时钟对象应有的属性及方法.
      * @author wizardc
      */
     export interface IClockClient {
@@ -66,7 +66,7 @@ namespace hammerc {
     }
 
     /**
-     * <code>ClockManagerImpl</code> 类实现了一个时钟管理器对象.
+     * ClockManagerImpl 类实现了一个时钟管理器对象.
      * @author wizardc
      */
     export class ClockManagerImpl implements IClockManager {
@@ -80,7 +80,7 @@ namespace hammerc {
         private _clientList: IClockClient[];
 
         /**
-         * 创建一个 <code>ClockManagerImpl</code> 对象.
+         * 创建一个 ClockManagerImpl 对象.
          */
         public constructor() {
         }

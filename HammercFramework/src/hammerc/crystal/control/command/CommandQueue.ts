@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>CommandQueue</code> 类实现了多个命令顺序执行的命令列表类.
+     * CommandQueue 类实现了多个命令顺序执行的命令列表类.
      * @author wizardc
      */
     export abstract class CommandQueue implements ICommand {
@@ -19,7 +19,7 @@ namespace hammerc {
         protected _subCommands: any[];
 
         /**
-         * <code>CommandQueue</code> 类为抽象类, 不能被实例化.
+         * CommandQueue 类为抽象类, 不能被实例化.
          */
         public constructor() {
             this._subCommands = [];

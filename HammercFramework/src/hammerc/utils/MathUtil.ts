@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>MathUtil</code> 类提供各种游戏中的基础数学运算.
+     * MathUtil 类提供各种游戏中的基础数学运算.
      * @author wizardc
      */
     export class MathUtil {

@@ -9,8 +9,8 @@
 
 namespace hammerc {
     /**
-     * <code>LanguageManager</code> 类提供多语言管理的支持.
-     * <ul><code>addLanguage</code> 方法中的 <code>content</code> 传入的语言内容文本须符合下面的规定：
+     * LanguageManager 类提供多语言管理的支持.
+     * <ul>addLanguage 方法中的 content 传入的语言内容文本须符合下面的规定：
      *   <li>使用换行分割每一条数据;</li>
      *   <li>取每一行的第一个等号 "=" 为键与值的分割标示;</li>
      *   <li>如果新的一行中没有等号 "=" 则本行数据视为上一行数据的值;</li>

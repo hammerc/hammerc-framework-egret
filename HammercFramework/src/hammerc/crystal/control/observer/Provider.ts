@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>Provider</code> 类提供观察者模式的实现, 它是一个单例类, 为模块或视图广播命令视图对象接收并处理命令提供支持.
+     * Provider 类提供观察者模式的实现, 它是一个单例类, 为模块或视图广播命令视图对象接收并处理命令提供支持.
      * @author wizardc
      */
     export class Provider {
@@ -19,11 +19,8 @@ namespace hammerc {
          * 获取本类的唯一实例.
          * @return 本类的唯一实例.
          */
-        public static getInstance(): Provider {
-            if (Provider._instance == null) {
-                Provider._instance = new Provider();
-            }
-            return Provider._instance;
+        public static get instance(): Provider {
+            return Provider._instance || (Provider._instance = new Provider());
         }
 
         private _observerMap: Object;

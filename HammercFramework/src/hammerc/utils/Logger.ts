@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>Logger</code> 类提供了一个简便的日志记录功能.
+     * Logger 类提供了一个简便的日志记录功能.
      * @author wizardc
      */
     export class Logger {
@@ -154,7 +154,7 @@ namespace hammerc {
     }
 
     /**
-     * <code>LoggerChannel</code> 类定义了消息通道的枚举.
+     * LoggerChannel 类定义了消息通道的枚举.
      * @author wizardc
      */
     export class LoggerChannel {

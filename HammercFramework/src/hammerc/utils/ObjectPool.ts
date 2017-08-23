@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>ObjectPool</code> 类定义了对象池对象.
+     * ObjectPool 类定义了对象池对象.
      * @author wizardc
      */
     export class ObjectPool<T extends ICacheable> {
@@ -17,7 +17,7 @@ namespace hammerc {
         private _list: T[];
 
         /**
-         * 创建一个 <code>ObjectPool</code> 对象.
+         * 创建一个 ObjectPool 对象.
          * @param creator 当对象池中没有对象时, 会调用该方法创建的对象进行返回.
          */
         public constructor(creator: () => T) {
@@ -65,7 +65,7 @@ namespace hammerc {
     }
 
     /**
-     * <code>ICacheable</code> 接口定义了可以通过对象池进行缓存的对象类型.
+     * ICacheable 接口定义了可以通过对象池进行缓存的对象类型.
      * @author wizardc
      */
     export interface ICacheable {

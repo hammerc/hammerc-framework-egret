@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>Contorller</code> 类是整个 MVC 框架中的控制者, 它是一个单例类, 为模块或视图广播命令 <code>ICommand</code> 对象接收并处理命令提供支持.
+     * Contorller 类是整个 MVC 框架中的控制者, 它是一个单例类, 为模块或视图广播命令 ICommand 对象接收并处理命令提供支持.
      * @author wizardc
      */
     export class Controller {
@@ -19,11 +19,8 @@ namespace hammerc {
          * 获取本类的唯一实例.
          * @return 本类的唯一实例.
          */
-        public static getInstance(): Controller {
-            if (Controller._instance == null) {
-                Controller._instance = new Controller();
-            }
-            return Controller._instance;
+        public static get instance(): Controller {
+            return Controller._instance || (Controller._instance = new Controller());
         }
 
         private _commandMap: Object;

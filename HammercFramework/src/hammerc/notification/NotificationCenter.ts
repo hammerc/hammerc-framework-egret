@@ -9,14 +9,14 @@
 
 namespace hammerc {
     /**
-     * <code>NotificationCenter</code> 类实现了消息通知功能.
+     * NotificationCenter 类实现了消息通知功能.
      * @author wizardc
      */
     export class NotificationCenter<T> {
         private _map: Dictionary<T, MessageInfo[]>;
 
         /**
-         * 创建一个 <code>NotificationCenter</code> 对象.
+         * 创建一个 NotificationCenter 对象.
          */
         public constructor() {
             this._map = new Dictionary<T, MessageInfo[]>();
@@ -105,7 +105,7 @@ namespace hammerc {
     }
 
     /**
-     * <code>MessageInfo</code> 类实现了消息信息对象.
+     * MessageInfo 类实现了消息信息对象.
      * @author wizardc
      */
     export class MessageInfo {
@@ -145,7 +145,7 @@ namespace hammerc {
         public thisObj: any;
 
         /**
-         * 创建一个 <code>MessageInfo</code> 对象.
+         * 创建一个 MessageInfo 对象.
          * @param messageHandler 消息处理函数.
          * @param thisObj this 指向对象.
          */

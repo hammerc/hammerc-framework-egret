@@ -9,14 +9,14 @@
 
 namespace hammerc {
     /**
-     * <code>StringUtil</code> 类提供对字符串的各种处理.
+     * StringUtil 类提供对字符串的各种处理.
      * @author wizardc
      */
     export class StringUtil {
         /**
          * 使用传入的各个参数替换指定的字符串内的 "{n}" 标记.
          * @param string 要在其中进行替换的字符串. 该字符串可包含 {n} 形式的特殊标记, 其中 n 为从零开始的索引, 它将被该索引处的其他参数 (如果指定) 替换.
-         * @param rest 可在 <code>string</code> 参数中的每个 {n} 位置被替换的其他参数, 其中 n 是一个对指定值数组的整数索引值 (从 0 开始). 如果第一个参数是一个数组, 则该数组将用作参数列表.
+         * @param rest 可在 string 参数中的每个 {n} 位置被替换的其他参数, 其中 n 是一个对指定值数组的整数索引值 (从 0 开始). 如果第一个参数是一个数组, 则该数组将用作参数列表.
          * @return 使用指定的各个参数替换了所有 {n} 标记的新字符串.
          */
         public static substitute(str: string, ...rest): string {

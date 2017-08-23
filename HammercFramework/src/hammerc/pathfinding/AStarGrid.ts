@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>AStarGrid</code> 类记录并描述一个需要被寻路的由多个格子组成的地图.
+     * AStarGrid 类记录并描述一个需要被寻路的由多个格子组成的地图.
      * @author wizardc
      */
     export class AStarGrid {
@@ -39,7 +39,7 @@ namespace hammerc {
         protected _endNode: AStarNode;
 
         /**
-         * 创建一个 <code>AStarGrid</code> 对象.
+         * 创建一个 AStarGrid 对象.
          * @param cols 设置地图的列数.
          * @param rows 设置地图的行数.
          */
@@ -179,7 +179,7 @@ namespace hammerc {
     }
 
     /**
-     * <code>AStarNode</code> 类定义了寻路地图的每一个格子的属性.
+     * AStarNode 类定义了寻路地图的每一个格子的属性.
      * @author wizardc
      */
     export class AStarNode {
@@ -234,7 +234,7 @@ namespace hammerc {
         public _aroundLinks: Array<AStarLink>;
 
         /**
-         * 创建一个 <code>AStarNode</code> 对象.
+         * 创建一个 AStarNode 对象.
          * @param x 格子的 x 轴坐标.
          * @param y 格子的 y 轴坐标.
          * @param walkable 格子是否可以通过.
@@ -249,7 +249,7 @@ namespace hammerc {
     }
 
     /**
-     * <code>AStarLink</code> 类定义了一个格子可移动到的格子的关系.
+     * AStarLink 类定义了一个格子可移动到的格子的关系.
      * @author wizardc
      */
     export class AStarLink {
@@ -264,7 +264,7 @@ namespace hammerc {
         public cost: number = 0;
 
         /**
-         * 创建一个 <code>AStarLink</code> 对象.
+         * 创建一个 AStarLink 对象.
          * @param node 格子对象.
          * @param cost 移动的代价.
          */

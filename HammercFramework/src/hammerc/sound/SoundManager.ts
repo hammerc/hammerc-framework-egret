@@ -29,11 +29,8 @@ namespace hammerc {
     export class SoundManager {
         private static _instance: SoundManager;
 
-        public static getInstance(): SoundManager {
-            if (this._instance == null) {
-                this._instance = new SoundManager();
-            }
-            return this._instance;
+        public static get instance(): SoundManager {
+            return SoundManager._instance || (SoundManager._instance = new SoundManager());
         }
 
         private _loadMgr: SoundLoadMgr;
@@ -488,7 +485,7 @@ namespace hammerc {
         }
 
         private updateVolume(): void {
-            this._soundChannel.volume = (this._isMusic ? SoundManager.getInstance().musicVolume : SoundManager.getInstance().soundVolume) * this._volume;
+            this._soundChannel.volume = (this._isMusic ? SoundManager.instance.musicVolume : SoundManager.instance.soundVolume) * this._volume;
         }
 
         private soundCompleteHandler(event: egret.Event): void {

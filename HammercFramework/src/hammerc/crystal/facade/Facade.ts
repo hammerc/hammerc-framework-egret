@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>Facade</code> 类代理 MVC 中所有处理方法.
+     * Facade 类代理 MVC 中所有处理方法.
      * @author wizardc
      */
     export class Facade {
@@ -19,11 +19,8 @@ namespace hammerc {
          * 获取本类的唯一实例.
          * @return 本类的唯一实例.
          */
-        public static getInstance(): Facade {
-            if (Facade._instance == null) {
-                Facade._instance = new Facade();
-            }
-            return Facade._instance;
+        public static get instance(): Facade {
+            return Facade._instance || (Facade._instance = new Facade());
         }
 
         /**
@@ -48,10 +45,10 @@ namespace hammerc {
          * 本类为单例类不能实例化.
          */
         private constructor() {
-            this._controller = Controller.getInstance();
-            this._provider = Provider.getInstance();
-            this._modelManager = ModelManager.getInstance();
-            this._viewManager = ViewManager.getInstance();
+            this._controller = Controller.instance;
+            this._provider = Provider.instance;
+            this._modelManager = ModelManager.instance;
+            this._viewManager = ViewManager.instance;
         }
 
         /**
@@ -121,7 +118,7 @@ namespace hammerc {
         /**
          * 判断一个代理对象是否被注册.
          * @param proxyName 代理对象名称.
-         * @return 指定的代理对象被注册返回 (<code>true</code>), 否则返回 (<code>false</code>).
+         * @return 指定的代理对象被注册返回 (true), 否则返回 (false).
          */
         public hasProxy(proxyName: string): boolean {
             return this._modelManager.hasProxy(proxyName);
@@ -156,7 +153,7 @@ namespace hammerc {
         /**
          * 判断一个中介对象是否被创建.
          * @param viewComponent 对应的视图对象.
-         * @return 指定的中介对象被创建返回 (<code>true</code>), 否则返回 (<code>false</code>).
+         * @return 指定的中介对象被创建返回 (true), 否则返回 (false).
          */
         public hasMediator(viewComponent: any): boolean {
             return this._viewManager.hasMediator(viewComponent);

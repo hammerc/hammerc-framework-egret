@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>Int64</code> 类提供 64 位带符号整型数字的支持.
+     * Int64 类提供 64 位带符号整型数字的支持.
      * <p>注意: 本类仅有记录数字的功能, 不支持运算.</p>
      * @author wizardc
      */
@@ -30,12 +30,12 @@ namespace hammerc {
         public static ONE: Int64 = new Int64(1);
 
         /**
-         * 该常量表示 <code>Int64</code> 数字的最小值.
+         * 该常量表示 Int64 数字的最小值.
          */
         public static MIN_VALUE = new Int64(0, 0x80000000);
 
         /**
-         * 该常量表示 <code>Int64</code> 数字的最大值.
+         * 该常量表示 Int64 数字的最大值.
          */
         public static MAX_VALUE: Int64 = new Int64(0xffffffff, 0x7fffffff);
 
@@ -111,7 +111,7 @@ namespace hammerc {
         private _high: number = 0;
 
         /**
-         * 创建一个 <code>Int64</code> 对象.
+         * 创建一个 Int64 对象.
          * @param low 低位数字.
          * @param high 高位数字.
          */

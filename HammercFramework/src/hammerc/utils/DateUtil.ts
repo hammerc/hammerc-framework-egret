@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>DateUtil</code> 类提供对日期和时间的各种基本操作和格式化操作.
+     * DateUtil 类提供对日期和时间的各种基本操作和格式化操作.
      * @author wizardc
      */
     export class DateUtil {
@@ -40,7 +40,7 @@ namespace hammerc {
         }
 
         /**
-         * 将一个 <code>Date</code> 对象格式化为一个指定类型的字符串.
+         * 将一个 Date 对象格式化为一个指定类型的字符串.
          * @param date 需要转换的日期对象.
          * @param format 转换后的格式.
          * <p>

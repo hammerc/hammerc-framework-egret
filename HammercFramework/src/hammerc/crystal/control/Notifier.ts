@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>Notifier</code> 实现了一个最简单的消息发送对象.
+     * Notifier 实现了一个最简单的消息发送对象.
      * @author wizardc
      */
     export class Notifier implements INotifier {
@@ -21,8 +21,8 @@ namespace hammerc {
          */
         public sendNotification(notificationName: string, body?: any, type?: string): void {
             var notification: INotification = Notification.fromPool(notificationName, type, body);
-            Controller.getInstance().executeCommand(notification);
-            Provider.getInstance().notifyObservers(notification);
+            Controller.instance.executeCommand(notification);
+            Provider.instance.notifyObservers(notification);
             Notification.toPool(notification);
         }
     }

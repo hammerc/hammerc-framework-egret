@@ -9,13 +9,13 @@
 
 namespace hammerc {
     /**
-     * <code>KeyPointAStar</code> 类基于 <code>AStar</code> 类实现, 添加了获取关键点路径的功能.
+     * KeyPointAStar 类基于 AStar 类实现, 添加了获取关键点路径的功能.
      * <p><b>注意: </b>该类得到的路径中如果属于同一条直线的路径则仅保留直线的两个端点, 每个格子对象按直线作为路径, 格子对象都出现在需要拐角处.</p>
      * @author wizardc
      */
     export class KeyPointAStar extends AStar {
         /**
-         * 创建一个 <code>KeyPointAStar</code> 对象.
+         * 创建一个 KeyPointAStar 对象.
          * @param heuristic 应用的启发函数, 为空则使用曼哈顿启发函数.
          */
         public constructor(heuristic: (node1: AStarNode, node2: AStarNode) => number = null) {

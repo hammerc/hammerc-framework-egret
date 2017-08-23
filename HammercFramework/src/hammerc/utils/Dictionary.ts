@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>Dictionary</code> 类提供泛型哈希表的支持.
+     * Dictionary 类提供泛型哈希表的支持.
      * <p>如果 key 使用继承 egret.HashObject 的对象, 则使用 hashCode 作为其键值, 否则使用 toString() 的返回作为键值.</p>
      * @author wizardc
      */
@@ -19,7 +19,7 @@ namespace hammerc {
         private _size: number;
 
         /**
-         * 创建一个 <code>Dictionary</code> 对象.
+         * 创建一个 Dictionary 对象.
          * @param map 初始化时的键值对对象.
          */
         public constructor(map?: Object) {

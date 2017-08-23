@@ -9,14 +9,14 @@
 
 namespace hammerc {
     /**
-     * <code>AbstractMediator</code> 类实现了中介的基类.
+     * AbstractMediator 类实现了中介的基类.
      * @author wizardc
      */
     export abstract class AbstractMediator extends Observer implements IMediator {
         /**
          * 代理 MVC 中所有处理方法的外观对象.
          */
-        protected _facade: Facade = Facade.getInstance();
+        protected _facade: Facade = Facade.instance;
 
         /**
          * 中介对象的名称.
@@ -29,7 +29,7 @@ namespace hammerc {
         protected _viewComponent: any;
 
         /**
-         * <code>AbstractMediator</code> 类为抽象类, 不能被实例化.
+         * AbstractMediator 类为抽象类, 不能被实例化.
          * @param name 中介对象的名称.
          * @param viewComponent 中介对象对应的具体显示对象.
          */

@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>Notification</code> 类实现了一个最简单的消息对象.
+     * Notification 类实现了一个最简单的消息对象.
      * @author wizardc
      */
     export class Notification implements INotification {
@@ -46,7 +46,7 @@ namespace hammerc {
         private _body: any;
 
         /**
-         * 创建一个 <code>Notification</code> 对象.
+         * 创建一个 Notification 对象.
          * @param name 消息名称.
          * @param type 消息的类型.
          * @param body 消息的数据.

@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>Struct</code> 类是可以写入字节流和从字节流中读取的自定义数据类.
+     * Struct 类是可以写入字节流和从字节流中读取的自定义数据类.
      * @author wizardc
      */
     export class Struct {
@@ -19,7 +19,7 @@ namespace hammerc {
         public static STRUCT_ENDIAN: string = egret.Endian.BIG_ENDIAN;
 
         /**
-         * 创建一个 <code>Struct</code> 对象.
+         * 创建一个 Struct 对象.
          */
         public constructor() {
         }

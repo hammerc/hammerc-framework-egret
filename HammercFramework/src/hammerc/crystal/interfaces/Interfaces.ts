@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>INotifier</code> 接口定义了消息发送对象应有的属性和方法.
+     * INotifier 接口定义了消息发送对象应有的属性和方法.
      * @author wizardc
      */
     export interface INotifier {
@@ -23,7 +23,7 @@ namespace hammerc {
     }
 
     /**
-     * <code>IObserver</code> 接口定义了观察者对象应有的属性和方法.
+     * IObserver 接口定义了观察者对象应有的属性和方法.
      * @author wizardc
      */
     export interface IObserver {
@@ -35,7 +35,7 @@ namespace hammerc {
     }
 
     /**
-     * <code>INotification</code> 接口定义了连接 Model 层和 View 层通讯发送的消息体对象应有的属性和方法.
+     * INotification 接口定义了连接 Model 层和 View 层通讯发送的消息体对象应有的属性和方法.
      * @author wizardc
      */
     export interface INotification {
@@ -56,8 +56,8 @@ namespace hammerc {
     }
 
     /**
-     * <code>ICommand</code> 接口定义了命令对象应有的属性和方法.
-     * <p>命令对象的实例会在接收到指定的消息后被创建, 当 <code>execute</code> 方法执行完成后该对象会被抛弃.</p>
+     * ICommand 接口定义了命令对象应有的属性和方法.
+     * <p>命令对象的实例会在接收到指定的消息后被创建, 当 execute 方法执行完成后该对象会被抛弃.</p>
      * @author wizardc
      */
     export interface ICommand {
@@ -69,7 +69,7 @@ namespace hammerc {
     }
 
     /**
-     * <code>IProxy</code> 接口定义代理类应有的属性和方法.
+     * IProxy 接口定义代理类应有的属性和方法.
      * @author wizardc
      */
     export interface IProxy {
@@ -95,7 +95,7 @@ namespace hammerc {
     }
 
     /**
-     * <code>IMediator</code> 接口定义了中介类应有的属性和方法.
+     * IMediator 接口定义了中介类应有的属性和方法.
      * @author wizardc
      */
     export interface IMediator extends IObserver {

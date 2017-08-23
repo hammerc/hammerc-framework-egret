@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>BinaryHeaps</code> 类实现了二叉堆.
+     * BinaryHeaps 类实现了二叉堆.
      * @author wizardc
      */
     export class BinaryHeaps<T> {
@@ -17,7 +17,7 @@ namespace hammerc {
         private _compare: (a: T, b: T) => number;
 
         /**
-         * 创建一个 <code>BinaryHeaps</code> 对象.
+         * 创建一个 BinaryHeaps 对象.
          * @param compare 指定比较方法, 用来确定获取的对象值是堆中最大还是最小的值.
          * <p>使用 a 的数据减去 b 的数据, 取出的数据为堆中的最大值.</p>
          * <p>使用 b 的数据减去 a 的数据, 取出的数据为堆中的最小值.</p>
@@ -90,7 +90,7 @@ namespace hammerc {
         }
 
         /**
-         * 取出数据最大或最小的对象, 具体规则由 <code>compare</code> 方法指定.
+         * 取出数据最大或最小的对象, 具体规则由 compare 方法指定.
          * @return 数据最大或最小的对象.
          */
         public dequeue(): T {

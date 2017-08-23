@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>UInt64</code> 类提供 64 位无符号整型数字的支持.
+     * UInt64 类提供 64 位无符号整型数字的支持.
      * <p>注意: 本类仅有记录数字的功能, 不支持运算.</p>
      * @author wizardc
      */
@@ -25,7 +25,7 @@ namespace hammerc {
         public static ONE: UInt64 = new UInt64(1);
 
         /**
-         * 该常量表示 <code>UInt64</code> 数字的最大值.
+         * 该常量表示 UInt64 数字的最大值.
          */
         public static MAX_VALUE = new UInt64(0xffffffff, 0xffffffff);
 
@@ -89,7 +89,7 @@ namespace hammerc {
         private _high: number = 0;
 
         /**
-         * 创建一个 <code>UInt64</code> 对象.
+         * 创建一个 UInt64 对象.
          * @param low 低位数字.
          * @param high 高位数字.
          */

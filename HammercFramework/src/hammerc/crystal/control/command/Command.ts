@@ -9,17 +9,17 @@
 
 namespace hammerc {
     /**
-     * <code>Command</code> 类实现了一个简单的命令类.
+     * Command 类实现了一个简单的命令类.
      * @author wizardc
      */
     export abstract class Command extends Notifier implements ICommand {
         /**
          * 代理 MVC 中所有处理方法的外观对象.
          */
-        protected _facade: Facade = Facade.getInstance();
+        protected _facade: Facade = Facade.instance;
 
         /**
-         * <code>Command</code> 类为抽象类, 不能被实例化.
+         * Command 类为抽象类, 不能被实例化.
          */
         public constructor() {
             super();

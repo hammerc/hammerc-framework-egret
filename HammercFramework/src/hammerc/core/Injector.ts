@@ -9,7 +9,7 @@
 
 namespace hammerc {
     /**
-     * <code>Injector</code> 类记录全局注入规则, 在项目中可以通过此类向框架内部注入指定的类, 从而定制或者扩展部分模块的功能.
+     * Injector 类记录全局注入规则, 在项目中可以通过此类向框架内部注入指定的类, 从而定制或者扩展部分模块的功能.
      * @author wizardc
      */
     export class Injector {
@@ -26,8 +26,8 @@ namespace hammerc {
         /**
          * 以类定义为值进行映射注入, 只有第一次请求它的单例时才会被实例化.
          * @param whenAskedFor 传递类定义或类完全限定名作为需要映射的键.
-         * @param instantiateClass 传递类作为需要映射的值, 它的构造函数必须为空. 若不为空, 请使用 <code>Injector.mapValue()</code> 方法直接注入实例.
-         * @param named 可选参数, 在同一个类作为键需要映射多条规则时, 可以传入此参数区分不同的映射. 在调用 <code>getInstance()</code> 方法时要传入同样的参数.
+         * @param instantiateClass 传递类作为需要映射的值, 它的构造函数必须为空. 若不为空, 请使用 Injector.mapValue() 方法直接注入实例.
+         * @param named 可选参数, 在同一个类作为键需要映射多条规则时, 可以传入此参数区分不同的映射. 在调用 getInstance() 方法时要传入同样的参数.
          */
         public static mapClass(whenAskedFor: any, instantiateClass: any, named: string = ""): void {
             var requestName: string = Injector.getKey(whenAskedFor) + "#" + named;
@@ -48,7 +48,7 @@ namespace hammerc {
          * 以实例为值进行映射注入, 当请求单例时始终返回注入的这个实例.
          * @param whenAskedFor 传递类定义或类的完全限定名作为需要映射的键.
          * @param useValue 传递对象实例作为需要映射的值.
-         * @param named 可选参数, 在同一个类作为键需要映射多条规则时, 可以传入此参数区分不同的映射. 在调用 <code>getInstance()</code> 方法时要传入同样的参数.
+         * @param named 可选参数, 在同一个类作为键需要映射多条规则时, 可以传入此参数区分不同的映射. 在调用 getInstance() 方法时要传入同样的参数.
          */
         public static mapValue(whenAskedFor: any, useValue: any, named: string = ""): void {
             var requestName: string = Injector.getKey(whenAskedFor) + "#" + named;
@@ -71,7 +71,7 @@ namespace hammerc {
         /**
          * 获取指定类映射的单例.
          * @param clazz 类定义或类的完全限定名.
-         * @param named 可选参数, 若在调用 <code>mapClass()</code> 映射时设置了这个值, 则要传入同样的字符串才能获取对应的单例.
+         * @param named 可选参数, 若在调用 mapClass() 映射时设置了这个值, 则要传入同样的字符串才能获取对应的单例.
          */
         public static getInstance(clazz: any, named: string = ""): any {
             var requestName: string = Injector.getKey(clazz) + "#" + named;
