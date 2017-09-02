@@ -47,9 +47,9 @@ namespace hammerc {
          */
         public enqueue(obj: T): void {
             this._data.push(obj);
-            var parentIndex: number = (this._data.length - 2) >> 1;
-            var objIndex: number = this._data.length - 1;
-            var temp: T = this._data[objIndex];
+            let parentIndex = (this._data.length - 2) >> 1;
+            let objIndex = this._data.length - 1;
+            let temp = this._data[objIndex];
             while (objIndex > 0) {
                 if (this._compare(temp, this._data[parentIndex]) > 0) {
                     this._data[objIndex] = this._data[parentIndex];
@@ -69,13 +69,13 @@ namespace hammerc {
          * @return 修改是否成功.
          */
         public modify(oldObj: T, newObj: T): boolean {
-            var objIndex: number = this._data.indexOf(oldObj);
+            let objIndex = this._data.indexOf(oldObj);
             if (objIndex == -1) {
                 return false;
             }
             this._data[objIndex] = newObj;
-            var parentIndex: number = (objIndex - 1) >> 1;
-            var temp: T = this._data[objIndex];
+            let parentIndex = (objIndex - 1) >> 1;
+            let temp = this._data[objIndex];
             while (objIndex > 0) {
                 if (this._compare(temp, this._data[parentIndex]) > 0) {
                     this._data[objIndex] = this._data[parentIndex];
@@ -97,11 +97,11 @@ namespace hammerc {
             if (this._data.length < 2) {
                 return this._data.pop();
             }
-            var result: T = this._data[0];
+            let result = this._data[0];
             this._data[0] = this._data.pop();
-            var parentIndex: number = 0;
-            var childIndex: number = 1;
-            var temp: T = this._data[parentIndex];
+            let parentIndex = 0;
+            let childIndex = 1;
+            let temp = this._data[parentIndex];
             while (childIndex <= this._data.length - 1) {
                 if (this._data[childIndex + 1] != null && this._compare(this._data[childIndex], this._data[childIndex + 1]) < 0) {
                     childIndex++;

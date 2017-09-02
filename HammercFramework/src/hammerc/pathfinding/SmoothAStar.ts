@@ -26,7 +26,7 @@ namespace hammerc {
          * 获取平滑的最优路径.
          */
         public get smoothPath(): AStarNode[] {
-            var path: AStarNode[] = this.keyPointPath;
+            let path = this.keyPointPath;
             if (path == null || path.length < 3) {
                 return path;
             } else {
@@ -36,11 +36,11 @@ namespace hammerc {
         }
 
         private smoothPathByFloyd(path: AStarNode[]): AStarNode[] {
-            var result: AStarNode[] = [];
+            let result: AStarNode[] = [];
             result.push(path[0]);
-            var len: number = path.length;
-            var nowIndex: number = 0;
-            var testIndex: number = 2;
+            let len = path.length;
+            let nowIndex = 0;
+            let testIndex = 2;
             while (len > testIndex) {
                 if (this.hasObstacle(path[nowIndex], path[testIndex])) {
                     result.push(path[testIndex - 1]);
@@ -55,9 +55,9 @@ namespace hammerc {
         }
 
         private hasObstacle(node1: AStarNode, node2: AStarNode): boolean {
-            var dx: number = node1.x - node2.x;
+            let dx = node1.x - node2.x;
             dx = dx < 0 ? -dx : dx;
-            var dy: number = node1.y - node2.y;
+            let dy = node1.y - node2.y;
             dy = dy < 0 ? -dy : dy;
             if (dx < 2 && dy < 2) {
                 return false;
@@ -73,10 +73,10 @@ namespace hammerc {
         }
 
         private verticalHasObstacle(node1: AStarNode, node2: AStarNode): boolean {
-            var col: number = node1.x;
-            var minRow: number = node1.y > node2.y ? node2.y : node1.y;
-            var maxRow: number = node1.y > node2.y ? node1.y : node2.y;
-            for (var i: number = minRow + 1; i < maxRow; i++) {
+            let col = node1.x;
+            let minRow = node1.y > node2.y ? node2.y : node1.y;
+            let maxRow = node1.y > node2.y ? node1.y : node2.y;
+            for (let i = minRow + 1; i < maxRow; i++) {
                 if (!this._grid.getNode(col, i).walkable) {
                     return true;
                 }
@@ -85,10 +85,10 @@ namespace hammerc {
         }
 
         private horizontalHasObstacle(node1: AStarNode, node2: AStarNode): boolean {
-            var row: number = node1.y;
-            var minCol: number = node1.x > node2.x ? node2.x : node1.x;
-            var maxCol: number = node1.x > node2.x ? node1.x : node2.x;
-            for (var i: number = minCol + 1; i < maxCol; i++) {
+            let row = node1.y;
+            let minCol = node1.x > node2.x ? node2.x : node1.x;
+            let maxCol = node1.x > node2.x ? node1.x : node2.x;
+            for (let i = minCol + 1; i < maxCol; i++) {
                 if (!this._grid.getNode(i, row).walkable) {
                     return true;
                 }
@@ -97,12 +97,12 @@ namespace hammerc {
         }
 
         private slopeHasObstacle(node1: AStarNode, node2: AStarNode): boolean {
-            var leftNode: AStarNode = node1.x > node2.x ? node2 : node1;
-            var rightNode: AStarNode = node1.x > node2.x ? node1 : node2;
-            var up: boolean = leftNode.y > rightNode.y;
-            var x: number = leftNode.x;
-            var y: number = leftNode.y;
-            for (var i: number = 0, len: number = rightNode.x - leftNode.x + 1; i < len; i++) {
+            let leftNode = node1.x > node2.x ? node2 : node1;
+            let rightNode = node1.x > node2.x ? node1 : node2;
+            let up = leftNode.y > rightNode.y;
+            let x = leftNode.x;
+            let y = leftNode.y;
+            for (let i = 0, len = rightNode.x - leftNode.x + 1; i < len; i++) {
                 if (i == 0) {
                     if (!this._grid.getNode(x + 1, y).walkable) {
                         return true;
@@ -112,7 +112,7 @@ namespace hammerc {
                         return true;
                     }
                 } else {
-                    for (var j: number = -1; j < 2; j++) {
+                    for (let j = -1; j < 2; j++) {
                         if (!this._grid.getNode(x + j, y).walkable) {
                             return true;
                         }
@@ -125,30 +125,31 @@ namespace hammerc {
         }
 
         private otherHasObstacle(dx: number, dy: number, node1: AStarNode, node2: AStarNode): boolean {
-            var k: number = (node1.y - node2.y) / (node1.x - node2.x);
-            var b: number = node1.y - k * node1.x;
-            var vertical: boolean = dx < dy;
-            var leftNode: AStarNode = node1.x > node2.x ? node2 : node1;
-            var rightNode: AStarNode = node1.x > node2.x ? node1 : node2;
-            var up: boolean = leftNode.y > rightNode.y;
+            let k = (node1.y - node2.y) / (node1.x - node2.x);
+            let b = node1.y - k * node1.x;
+            let vertical = dx < dy;
+            let leftNode = node1.x > node2.x ? node2 : node1;
+            let rightNode = node1.x > node2.x ? node1 : node2;
+            let up = leftNode.y > rightNode.y;
             dx *= 1000;
             dy *= 1000;
             b *= 1000;
-            var startX: number = leftNode.x * 1000 + 500;
-            var endX: number = startX + dx;
-            var startY: number = up ? leftNode.y * 1000 - 500 : leftNode.y * 1000 + 500;
-            var endY: number = up ? startY - dy : startY + dy;
-            var x: number = startX;
-            var y: number = startY;
+            let startX = leftNode.x * 1000 + 500;
+            let endX = startX + dx;
+            let startY = up ? leftNode.y * 1000 - 500 : leftNode.y * 1000 + 500;
+            let endY = up ? startY - dy : startY + dy;
+            let x = startX;
+            let y = startY;
             while (true) {
                 if (vertical) {
                     x = (y - b) / k;
                 } else {
                     y = k * x + b;
                 }
+                let i: number, iLen: number, j: number, jLen: number;
                 if (this.is4GridCenterPoint(x, y)) {
-                    for (var i: number = x / 1000, iLen: number = i + 1; i <= iLen; i++) {
-                        for (var j: number = y / 1000, jLen: number = j + 1; j <= jLen; j++) {
+                    for (i = x / 1000, iLen = i + 1; i <= iLen; i++) {
+                        for (j = y / 1000, jLen = j + 1; j <= jLen; j++) {
                             if (this._grid.getNode(i, j) != this._grid.startNode && this._grid.getNode(i, j) != this._grid.endNode && !this._grid.getNode(i, j).walkable) {
                                 return true;
                             }

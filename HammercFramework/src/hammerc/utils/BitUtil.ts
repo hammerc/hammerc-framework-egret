@@ -95,7 +95,7 @@ namespace hammerc {
         }
 
         private static validPosition(position: number, bit32: boolean = true): void {
-            var maxNum: number = bit32 ? 32 : 64;
+            let maxNum = bit32 ? 32 : 64;
             if (position < 0 || position >= maxNum) {
                 throw new Error("参数\"position\"的数据无效，设置为" + position + "无效！");
             }

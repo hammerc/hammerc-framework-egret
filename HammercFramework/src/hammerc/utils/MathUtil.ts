@@ -22,8 +22,8 @@ namespace hammerc {
          * @return 两个点之间的距离.
          */
         public static distance(x1: number, y1: number, x2: number, y2: number): number {
-            var dx: number = x2 - x1;
-            var dy: number = y2 - y1;
+            let dx = x2 - x1;
+            let dy = y2 - y1;
             return Math.sqrt(dx * dx + dy * dy);
         }
 
@@ -34,8 +34,8 @@ namespace hammerc {
          * @return 两个点之间的距离.
          */
         public static distance2(point1: egret.Point, point2: egret.Point): number {
-            var dx: number = point2.x - point1.x;
-            var dy: number = point2.y - point1.y;
+            let dx = point2.x - point1.x;
+            let dy = point2.y - point1.y;
             return Math.sqrt(dx * dx + dy * dy);
         }
 
@@ -48,8 +48,8 @@ namespace hammerc {
          * @return 两个点之间的弧度.
          */
         public static radians(x1: number, y1: number, x2: number, y2: number): number {
-            var dx: number = x2 - x1;
-            var dy: number = y2 - y1;
+            let dx = x2 - x1;
+            let dy = y2 - y1;
             return Math.atan2(dy, dx);
         }
 
@@ -60,8 +60,8 @@ namespace hammerc {
          * @return 两个点之间的弧度.
          */
         public static radians2(point1: egret.Point, point2: egret.Point): number {
-            var dx: number = point2.x - point1.x;
-            var dy: number = point2.y - point1.y;
+            let dx = point2.x - point1.x;
+            let dy = point2.y - point1.y;
             return Math.atan2(dy, dx);
         }
 

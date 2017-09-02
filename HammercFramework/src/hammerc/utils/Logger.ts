@@ -114,7 +114,7 @@ namespace hammerc {
         }
 
         private static logging(channel: number, channelName: string, args: Array<any>) {
-            var message: string = Logger.getTips(channelName) + " " + args.join(", ");
+            let message = Logger.getTips(channelName) + " " + args.join(", ");
             switch (channel) {
                 case LoggerChannel.LOG:
                     console.log(message);
@@ -132,12 +132,13 @@ namespace hammerc {
         }
 
         private static getTips(channelName: string): string {
-            var result: string = "";
+            let result = "";
             if (Logger.includeChannels) {
                 result += channelName + " ";
             }
+            let date: Date;
             if (Logger.includeDate || Logger.includeTime) {
-                var date: Date = new Date();
+                date = new Date();
             }
             if (Logger.includeDate) {
                 result += DateUtil.dateFormat(date, "YYYY-MM-DD") + " ";

@@ -30,7 +30,7 @@ namespace hammerc {
          * @param named 可选参数, 在同一个类作为键需要映射多条规则时, 可以传入此参数区分不同的映射. 在调用 getInstance() 方法时要传入同样的参数.
          */
         public static mapClass(whenAskedFor: any, instantiateClass: any, named: string = ""): void {
-            var requestName: string = Injector.getKey(whenAskedFor) + "#" + named;
+            let requestName = Injector.getKey(whenAskedFor) + "#" + named;
             Injector._classMap[requestName] = instantiateClass;
         }
 
@@ -51,7 +51,7 @@ namespace hammerc {
          * @param named 可选参数, 在同一个类作为键需要映射多条规则时, 可以传入此参数区分不同的映射. 在调用 getInstance() 方法时要传入同样的参数.
          */
         public static mapValue(whenAskedFor: any, useValue: any, named: string = ""): void {
-            var requestName: string = Injector.getKey(whenAskedFor) + "#" + named;
+            let requestName = Injector.getKey(whenAskedFor) + "#" + named;
             Injector._valueMap[requestName] = useValue;
         }
 
@@ -61,7 +61,7 @@ namespace hammerc {
          * @param named 可选参数, 在同一个类作为键需要映射多条规则时, 可以传入此参数区分不同的映射.
          */
         public static hasMapRule(whenAskedFor: any, named: string = ""): boolean {
-            var requestName: string = Injector.getKey(whenAskedFor) + "#" + named;
+            let requestName = Injector.getKey(whenAskedFor) + "#" + named;
             if (Injector._valueMap.hasOwnProperty(requestName) || Injector._classMap.hasOwnProperty(requestName)) {
                 return true;
             }
@@ -74,13 +74,13 @@ namespace hammerc {
          * @param named 可选参数, 若在调用 mapClass() 映射时设置了这个值, 则要传入同样的字符串才能获取对应的单例.
          */
         public static getInstance(clazz: any, named: string = ""): any {
-            var requestName: string = Injector.getKey(clazz) + "#" + named;
+            let requestName = Injector.getKey(clazz) + "#" + named;
             if (Injector._valueMap.hasOwnProperty(requestName)) {
                 return Injector._valueMap[requestName];
             }
-            var returnClass: any = Injector._classMap[requestName];
+            let returnClass = Injector._classMap[requestName];
             if (returnClass != null) {
-                var instance: any = new returnClass();
+                let instance = new returnClass();
                 Injector._valueMap[requestName] = instance;
                 delete Injector._classMap[requestName];
                 return instance;

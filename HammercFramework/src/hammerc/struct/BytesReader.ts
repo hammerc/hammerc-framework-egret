@@ -127,8 +127,8 @@ namespace hammerc {
          * @return 对应的数据.
          */
         public static readBytes(input: egret.ByteArray): egret.ByteArray {
-            var len: number = input.readUnsignedInt();
-            var bytes: egret.ByteArray = new egret.ByteArray();
+            let len = input.readUnsignedInt();
+            let bytes = new egret.ByteArray();
             input.readBytes(bytes, 0, len);
             return bytes;
         }
@@ -140,7 +140,7 @@ namespace hammerc {
          * @return 自定义数据.
          */
         public static readStruct(input: egret.ByteArray, structClass: any): Struct {
-            var target: Struct = <Struct> new structClass();
+            let target = <Struct> new structClass();
             target["readExternal"](input);
             return target;
         }

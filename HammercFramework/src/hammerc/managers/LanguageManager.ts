@@ -22,7 +22,7 @@ namespace hammerc {
      * @author wizardc
      */
     export class LanguageManager {
-        private static _languageMap: Object = {};
+        private static _languageMap: { [k: string]: { [k: string]: string } } = {};
         private static _defaultLanguage: string;
 
         /**
@@ -39,8 +39,8 @@ namespace hammerc {
          * 获取当前可以使用的所有语言包名称列表.
          */
         public static get languageList(): string[] {
-            var list: string[] = [];
-            for (var key in LanguageManager._languageMap) {
+            let list: string[] = [];
+            for (let key in LanguageManager._languageMap) {
                 list.push(key);
             }
             return list;
@@ -55,14 +55,14 @@ namespace hammerc {
             if (!LanguageManager._languageMap.hasOwnProperty(language)) {
                 LanguageManager._languageMap[language] = {};
             }
-            var contentMap: any = LanguageManager._languageMap[language];
-            var textLines: string[] = content.split(/\r?\n|\n/);
-            var key: string, value: string;
-            for (var i = 0, len = textLines.length; i < len; i++) {
-                var textLine: string = textLines[i];
+            let contentMap = LanguageManager._languageMap[language];
+            let textLines = content.split(/\r?\n|\n/);
+            let key: string, value: string;
+            for (let i = 0, len = textLines.length; i < len; i++) {
+                let textLine = textLines[i];
                 if (textLine != null && textLine.length > 0 && textLine.charAt(0) != "!" && textLine.charAt(0) != "#") {
                     if (/^\S+=.*/.test(textLine)) {
-                        var index: number = textLine.indexOf("=");
+                        let index = textLine.indexOf("=");
                         key = textLine.slice(0, index);
                         value = textLine.slice(index + 1);
                         contentMap[key] = LanguageManager.analyzeText(value);
@@ -99,9 +99,9 @@ namespace hammerc {
          */
         public static getStringByLanguage(language: string, key: string, ...args): string {
             if (LanguageManager._languageMap.hasOwnProperty(language)) {
-                var contentMap: Object = LanguageManager._languageMap[language];
+                let contentMap = LanguageManager._languageMap[language];
                 if (contentMap.hasOwnProperty(key)) {
-                    var text: string = contentMap[key];
+                    let text = contentMap[key];
                     return StringUtil.substitute.apply(null, [text].concat(args));
                 }
             }

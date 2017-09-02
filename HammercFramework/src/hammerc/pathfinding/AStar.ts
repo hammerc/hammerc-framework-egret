@@ -32,8 +32,8 @@ namespace hammerc {
          * @return 两个节点移动的代价.
          */
         public static manhattan(node1: AStarNode, node2: AStarNode): number {
-            var dx: number = node1.x > node2.x ? node1.x - node2.x : node2.x - node1.x;
-            var dy: number = node1.y > node2.y ? node1.y - node2.y : node2.y - node1.y;
+            let dx = node1.x > node2.x ? node1.x - node2.x : node2.x - node1.x;
+            let dy = node1.y > node2.y ? node1.y - node2.y : node2.y - node1.y;
             return (dx + dy) * AStar.STRAIGHT_COST;
         }
 
@@ -44,8 +44,8 @@ namespace hammerc {
          * @return 两个节点移动的代价.
          */
         public static euclidian(node1: AStarNode, node2: AStarNode): number {
-            var dx: number = node1.x > node2.x ? node1.x - node2.x : node2.x - node1.x;
-            var dy: number = node1.y > node2.y ? node1.y - node2.y : node2.y - node1.y;
+            let dx = node1.x > node2.x ? node1.x - node2.x : node2.x - node1.x;
+            let dy = node1.y > node2.y ? node1.y - node2.y : node2.y - node1.y;
             return (dx * dx + dy * dy) * AStar.STRAIGHT_COST;
         }
 
@@ -56,8 +56,8 @@ namespace hammerc {
          * @return 两个节点移动的代价.
          */
         public static diagonal(node1: AStarNode, node2: AStarNode): number {
-            var dx: number = node1.x > node2.x ? node1.x - node2.x : node2.x - node1.x;
-            var dy: number = node1.y > node2.y ? node1.y - node2.y : node2.y - node1.y;
+            let dx = node1.x > node2.x ? node1.x - node2.x : node2.x - node1.x;
+            let dy = node1.y > node2.y ? node1.y - node2.y : node2.y - node1.y;
             return dx > dy ? AStar.DIAG_COST * dy + AStar.STRAIGHT_COST * (dx - dy) : AStar.DIAG_COST * dx + AStar.STRAIGHT_COST * (dy - dx);
         }
 
@@ -120,15 +120,15 @@ namespace hammerc {
          * @return 是否可以搜寻到该路径.
          */
         protected search(): boolean {
-            var node: AStarNode = this._startNode;
+            let node = this._startNode;
             while (node != this._endNode) {
-                var aroundLinks: Array<AStarLink> = node._aroundLinks;
-                for (var i: number = 0, len: number = aroundLinks.length; i < len; i++) {
-                    var test: AStarNode = aroundLinks[i].node;
-                    var cost: number = aroundLinks[i].cost;
-                    var g: number = node._g + cost;
-                    var h: number = this._heuristic(test, this._endNode);
-                    var f: number = g + h;
+                let aroundLinks = node._aroundLinks;
+                for (let i = 0, len = aroundLinks.length; i < len; i++) {
+                    let test = aroundLinks[i].node;
+                    let cost = aroundLinks[i].cost;
+                    let g = node._g + cost;
+                    let h = this._heuristic(test, this._endNode);
+                    let f = g + h;
                     if (test._checkNum == this._nowCheckNum) {
                         if (test._f > f) {
                             test._f = f;
@@ -160,7 +160,7 @@ namespace hammerc {
 
         private buildPath(): void {
             this._path = [];
-            var node: AStarNode = this._endNode;
+            let node = this._endNode;
             this._path.push(node);
             while (node != this._startNode) {
                 node = node._parent;

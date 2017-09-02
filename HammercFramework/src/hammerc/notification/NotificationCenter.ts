@@ -32,8 +32,8 @@ namespace hammerc {
             if (!this._map.has(messageType)) {
                 this._map.add(messageType, []);
             }
-            var list: MessageInfo[] = this._map.get(messageType);
-            for (var i = 0, len = list.length; i < len; i++) {
+            let list = this._map.get(messageType);
+            for (let i = 0, len = list.length; i < len; i++) {
                 if (list[i].messageHandler == messageHandler && list[i].thisObj == thisObj) {
                     return;
                 }
@@ -48,9 +48,9 @@ namespace hammerc {
          */
         public sendMessage(messageType: T, ...args): void {
             if (this._map.has(messageType)) {
-                var list: MessageInfo[] = this._map.get(messageType);
-                for (var i = 0, len = list.length; i < len; i++) {
-                    var info: MessageInfo = list[i];
+                let list = this._map.get(messageType);
+                for (let i = 0, len = list.length; i < len; i++) {
+                    let info = list[i];
                     info.messageHandler.apply(info.thisObj, [messageType].concat(args));
                 }
             }
@@ -64,14 +64,14 @@ namespace hammerc {
          */
         public unregiestMessage(messageType: T, messageHandler: Function, thisObj?: any): void {
             if (this._map.has(messageType)) {
-                var list: MessageInfo[] = this._map.get(messageType);
+                let list = this._map.get(messageType);
                 for (var i = 0, len = list.length; i < len; i++) {
                     if (list[i].messageHandler == messageHandler && list[i].thisObj == thisObj) {
                         break;
                     }
                 }
                 if (i != len) {
-                    var info: MessageInfo = list.splice(i, 1)[0];
+                    let info = list.splice(i, 1)[0];
                     MessageInfo.toPool(info);
                 }
             }
@@ -83,8 +83,8 @@ namespace hammerc {
          */
         public removeMessage(messageType: T): void {
             if (this._map.has(messageType)) {
-                var list: MessageInfo[] = this._map.get(messageType);
-                for (var i = 0, len = list.length; i < len; i++) {
+                let list = this._map.get(messageType);
+                for (let i = 0, len = list.length; i < len; i++) {
                     MessageInfo.toPool(list[i]);
                 }
                 this._map.remove(messageType);
@@ -96,7 +96,7 @@ namespace hammerc {
          */
         public clear(): void {
             this._map.forEach((item, key, dictionary) => {
-                for (var i = 0, len = item.length; i < len; i++) {
+                for (let i = 0, len = item.length; i < len; i++) {
                     MessageInfo.toPool(item[i]);
                 }
             }, this);

@@ -34,7 +34,7 @@ namespace hammerc {
          * @return 对应的日期对象.
          */
         public static numberToDate(timeStamp: number): Date {
-            var date: Date = new Date();
+            let date = new Date();
             date.setTime(timeStamp);
             return date;
         }
@@ -64,21 +64,21 @@ namespace hammerc {
             if (date == null) {
                 throw new Error("参数\"date\"不能为空！");
             }
-            var result: string = "",
-            year: string = date.getFullYear().toString(),
-            month: number = date.getMonth() + 1,
-            fullMonth: string = month <= 9 ? "0" + month : month.toString(),
-            day: number = date.getDate(),
-            fullDay: string = day <= 9 ? "0" + day : day.toString(),
-            week: number = date.getDay(),
-            hour: number = date.getHours(),
-            fullHour: string = hour <= 9 ? "0" + hour : hour.toString(),
-            hourL: number = hour % 12,
-            fullHourL: string = hourL <= 9 ? "0" + hourL : hourL.toString(),
-            minute: number = date.getMinutes(),
-            fullMinute: string = minute <= 9 ? "0" + minute : minute.toString(),
-            second: number = date.getSeconds(),
-            fullSecond: string = second <= 9 ? "0" + second : second.toString();
+            let result = "",
+            year = date.getFullYear().toString(),
+            month = date.getMonth() + 1,
+            fullMonth = month <= 9 ? "0" + month : month.toString(),
+            day = date.getDate(),
+            fullDay = day <= 9 ? "0" + day : day.toString(),
+            week = date.getDay(),
+            hour = date.getHours(),
+            fullHour = hour <= 9 ? "0" + hour : hour.toString(),
+            hourL = hour % 12,
+            fullHourL = hourL <= 9 ? "0" + hourL : hourL.toString(),
+            minute = date.getMinutes(),
+            fullMinute = minute <= 9 ? "0" + minute : minute.toString(),
+            second = date.getSeconds(),
+            fullSecond = second <= 9 ? "0" + second : second.toString();
             result = format;
             result = result.replace(/YYYY/g, year);
             result = result.replace(/YY/g, year.slice(-2));
@@ -111,14 +111,14 @@ namespace hammerc {
          * @return 格式化后的字符串.
          */
         public static timeFormat(time: number, format: string = "D:HH:NN:SS"): string {
-            var result: string = "",
-            day: number = time / 86400,
-            hour: number = (time / 3600) % 24,
-            fullHour: string = hour <= 9 ? "0" + hour : hour.toString(),
-            minute: number = (time % 3600 / 60),
-            fullMinute: string = minute <= 9 ? "0" + minute : minute.toString(),
-            second: number = (time % 60),
-            fullSecond: string = second <= 9 ? "0" + second : second.toString();
+            let result = "",
+            day = time / 86400,
+            hour = (time / 3600) % 24,
+            fullHour = hour <= 9 ? "0" + hour : hour.toString(),
+            minute = (time % 3600 / 60),
+            fullMinute = minute <= 9 ? "0" + minute : minute.toString(),
+            second = (time % 60),
+            fullSecond = second <= 9 ? "0" + second : second.toString();
             result = format;
             result = result.replace(/D/g, day.toString());
             result = result.replace(/HH/g, fullHour);

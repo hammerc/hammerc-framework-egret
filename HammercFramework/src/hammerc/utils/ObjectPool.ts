@@ -46,7 +46,7 @@ namespace hammerc {
          * @returns 空闲的对象.
          */
         public take(): T {
-            var obj: T;
+            let obj: T;
             if (this._list.length == 0) {
                 obj = this._creator.call(null);
             } else {

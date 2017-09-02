@@ -45,8 +45,8 @@ namespace hammerc {
          * @return 64 位的带符号整数.
          */
         public static readInt64(input: egret.ByteArray): Int64 {
-            var low: number;
-            var high: number;
+            let low: number;
+            let high: number;
             if (input.endian == egret.Endian.LITTLE_ENDIAN) {
                 low = input.readUnsignedInt();
                 high = input.readUnsignedInt();
@@ -80,15 +80,15 @@ namespace hammerc {
          */
         public static parseInt64(value: string, radix: number = 10): Int64 {
             value = value.toLowerCase();
-            var negative: boolean = value.indexOf("-") == 0;
+            let negative = value.indexOf("-") == 0;
             if (negative) {
                 value = value.substr(1);
             }
-            var div: number = 4294967296;
-            var low: number = 0;
-            var high: number = 0;
-            for (var i: number = 0; i < value.length; i++) {
-                var num: number = value.charCodeAt(i) - 48;
+            let div = 4294967296;
+            let low = 0;
+            let high = 0;
+            for (let i = 0; i < value.length; i++) {
+                let num = value.charCodeAt(i) - 48;
                 if (num > 9) {
                     num -= 39;
                 }
@@ -158,7 +158,7 @@ namespace hammerc {
          * @return 对应的字节数组.
          */
         public toByteArray(endian: string = "littleEndian"): egret.ByteArray {
-            var bytes: egret.ByteArray = new egret.ByteArray();
+            let bytes = new egret.ByteArray();
             bytes.endian = endian;
             if (bytes.endian == egret.Endian.LITTLE_ENDIAN) {
                 bytes.writeUnsignedInt(this._low);
@@ -179,11 +179,11 @@ namespace hammerc {
             if (radix < 2 || radix > 36) {
                 throw new RangeError("基数必须介于2到36之间，当前为" + radix + "！");
             }
-            var result: string = "";
-            var lowUint: number = this._low;
-            var highUint: number = this._high;
-            var temp: number = highUint | (1 << 31);
-            var negative: boolean = (highUint == temp);
+            let result = "";
+            let lowUint = this._low;
+            let highUint = this._high;
+            let temp = highUint | (1 << 31);
+            let negative = (highUint == temp);
             if (negative) {
                 if (lowUint == 0) {
                     --highUint;
@@ -192,10 +192,10 @@ namespace hammerc {
                 lowUint = ~lowUint;
                 highUint = ~highUint;
             }
-            var highRemain: number = 0;
-            var lowRemain: number = 0;
-            var tempNum: number = 0;
-            var maxLowUint: number = 4294967296;
+            let highRemain = 0;
+            let lowRemain = 0;
+            let tempNum = 0;
+            let maxLowUint = 4294967296;
             while (highUint != 0 || lowUint != 0) {
                 highRemain = highUint % radix;
                 tempNum = highRemain * maxLowUint + lowUint;

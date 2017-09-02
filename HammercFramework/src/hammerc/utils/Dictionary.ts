@@ -14,15 +14,15 @@ namespace hammerc {
      * @author wizardc
      */
     export class Dictionary<TKey, TValue> {
-        private _map: Object;
-        private _keyMap: Object;
+        private _map: { [k: string]: TValue };
+        private _keyMap: { [k: string]: TKey };
         private _size: number;
 
         /**
          * 创建一个 Dictionary 对象.
          * @param map 初始化时的键值对对象.
          */
-        public constructor(map?: Object) {
+        public constructor(map?: { [k: string]: TValue }) {
             this._map = map || {};
             this._keyMap = {};
             this._size = 0;
@@ -48,7 +48,7 @@ namespace hammerc {
          * @param value 值.
          */
         public add(key: TKey, value: TValue): void {
-            var k: string = this.getKey(key);
+            let k = this.getKey(key);
             if (!this._map.hasOwnProperty(k)) {
                 ++this._size;
             }
@@ -62,7 +62,7 @@ namespace hammerc {
          * @returns 是否存在.
          */
         public has(key: TKey): boolean {
-            var k: string = this.getKey(key);
+            let k = this.getKey(key);
             return this._map.hasOwnProperty(k);
         }
 
@@ -72,7 +72,7 @@ namespace hammerc {
          * @returns 值.
          */
         public get(key: TKey): TValue {
-            var k: string = this.getKey(key);
+            let k = this.getKey(key);
             return this._map[k];
         }
 
@@ -82,7 +82,7 @@ namespace hammerc {
          * @param thisArg 回调指向的 this 对象.
          */
         public forEach(callbackfn: (item: TValue, key: TKey, dictionary: Dictionary<TKey, TValue>) => void, thisArg?: any): void {
-            for (var key in this._map) {
+            for (let key in this._map) {
                 if (this._map.hasOwnProperty(key)) {
                     callbackfn.call(thisArg, this._map[key], this._keyMap[key], this);
                 }
@@ -95,7 +95,7 @@ namespace hammerc {
          * @returns 如果存在移除的数据返回 true, 否则返回 false.
          */
         public remove(key: TKey): boolean {
-            var k: string = this.getKey(key);
+            let k = this.getKey(key);
             if (!this._map.hasOwnProperty(k)) {
                 return false;
             }
@@ -119,8 +119,8 @@ namespace hammerc {
          * @returns 本对象的字符串表示形式.
          */
         public toString(): string {
-            var result: string[] = [];
-            for (var key in this._map) {
+            let result: string[] = [];
+            for (let key in this._map) {
                 if (this._map.hasOwnProperty(key)) {
                     result.push(`{key:${this._keyMap[key]}, value:${this._map[key]}}`);
                 }

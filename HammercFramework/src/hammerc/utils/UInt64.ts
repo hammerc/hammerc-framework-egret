@@ -35,8 +35,8 @@ namespace hammerc {
          * @return 64 位的无符号整数.
          */
         public static readUnsignedInt64(input: egret.ByteArray): UInt64 {
-            var low: number;
-            var high: number;
+            let low: number;
+            let high: number;
             if (input.endian == egret.Endian.LITTLE_ENDIAN) {
                 low = input.readUnsignedInt();
                 high = input.readUnsignedInt();
@@ -70,11 +70,11 @@ namespace hammerc {
          */
         public static parseUInt64(value: string, radix: number = 10): UInt64 {
             value = value.toLowerCase();
-            var div: number = 4294967296;
-            var low: number = 0;
-            var high: number = 0;
-            for (var i: number = 0; i < value.length; i++) {
-                var num: number = value.charCodeAt(i) - 48;
+            let div = 4294967296;
+            let low = 0;
+            let high = 0;
+            for (let i = 0; i < value.length; i++) {
+                let num = value.charCodeAt(i) - 48;
                 if (num > 9) {
                     num -= 39;
                 }
@@ -136,7 +136,7 @@ namespace hammerc {
          * @return 对应的字节数组.
          */
         public toByteArray(endian: string = "littleEndian"): egret.ByteArray {
-            var bytes: egret.ByteArray = new egret.ByteArray();
+            let bytes = new egret.ByteArray();
             bytes.endian = endian;
             if (bytes.endian == egret.Endian.LITTLE_ENDIAN) {
                 bytes.writeUnsignedInt(this._low);
@@ -157,13 +157,13 @@ namespace hammerc {
             if (radix < 2 || radix > 36) {
                 throw new RangeError("基数必须介于2到36之间，当前为" + radix + "！");
             }
-            var result: string = "";
-            var lowUInt: number = this._low;
-            var highUInt: number = this._high;
-            var highRemain: number = 0;
-            var lowRemain: number = 0;
-            var tempNum: number = 0;
-            var maxLowUInt: number = 4294967296;
+            let result = "";
+            let lowUInt = this._low;
+            let highUInt = this._high;
+            let highRemain = 0;
+            let lowRemain = 0;
+            let tempNum = 0;
+            let maxLowUInt = 4294967296;
             while (highUInt != 0 || lowUInt != 0) {
                 highRemain = highUInt % radix;
                 tempNum = highRemain * maxLowUInt + lowUInt;

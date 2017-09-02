@@ -147,16 +147,16 @@ namespace hammerc {
             if (this._paused) {
                 return;
             }
-            var passedTime: number = timeStamp - this._lastTime;
+            let passedTime = timeStamp - this._lastTime;
             this._lastTime = timeStamp;
-            var length: number = this._clientList.length;
+            let length = this._clientList.length;
             if (length == 0) {
                 return;
             }
             passedTime *= this._runningRate;
-            var currentIndex: number = 0;
-            for (var i: number = 0; i < length; i++) {
-                var client: IClockClient = this._clientList[i];
+            let currentIndex = 0;
+            for (var i = 0; i < length; i++) {
+                let client = this._clientList[i];
                 if (client != null) {
                     if (currentIndex != i) {
                         this._clientList[currentIndex] = client;
@@ -190,7 +190,7 @@ namespace hammerc {
          * @param client 时钟对象.
          */
         public removeClockClient(client: IClockClient): void {
-            var index: number = this._clientList.indexOf(client);
+            let index = this._clientList.indexOf(client);
             if (index != -1) {
                 this._clientList[index] = null;
             }

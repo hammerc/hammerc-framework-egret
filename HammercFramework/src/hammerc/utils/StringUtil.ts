@@ -20,15 +20,15 @@ namespace hammerc {
          * @return 使用指定的各个参数替换了所有 {n} 标记的新字符串.
          */
         public static substitute(str: string, ...rest): string {
-            var len: number = rest.length;
-            var args: any[];
+            let len = rest.length;
+            let args: any[];
             if (len == 1 && rest[0] instanceof Array) {
                 args = rest[0];
                 len = args.length;
             } else {
                 args = rest;
             }
-            for (var i: number = 0; i < len; i++) {
+            for (let i = 0; i < len; i++) {
                 str = str.replace(new RegExp("\\{" + i + "\\}", "g"), args[i]);
             }
             return str;

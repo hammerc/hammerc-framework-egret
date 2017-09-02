@@ -47,9 +47,9 @@ namespace hammerc {
             this._cols = cols;
             this._rows = rows;
             this._grid = [];
-            for (var i: number = 0; i < this._cols; i++) {
+            for (let i = 0; i < this._cols; i++) {
                 this._grid[i] = [];
-                for (var j: number = 0; j < this._rows; j++) {
+                for (let j = 0; j < this._rows; j++) {
                     this._grid[i][j] = this.createNode(i, j);
                 }
             }
@@ -104,21 +104,21 @@ namespace hammerc {
          * <p>注意: 在设置好地图数据后调用一次即可.</p>
          */
         public cacheAroundLinks(): void {
-            for (var i: number = 0; i < this._cols; i++) {
-                for (var j: number = 0; j < this._rows; j++) {
-                    var node: AStarNode = this._grid[i][j];
+            for (let i = 0; i < this._cols; i++) {
+                for (let j = 0; j < this._rows; j++) {
+                    let node = this._grid[i][j];
                     node._aroundLinks = new Array<AStarLink>();
-                    var startX: number = Math.max(0, node.x - 1);
-                    var endX: number = Math.min(this._cols - 1, node.x + 1);
-                    var startY: number = Math.max(0, node.y - 1);
-                    var endY: number = Math.min(this._rows - 1, node.y + 1);
-                    for (var m: number = startX; m <= endX; m++) {
-                        for (var n: number = startY; n <= endY; n++) {
-                            var test: AStarNode = this._grid[m][n];
+                    let startX = Math.max(0, node.x - 1);
+                    let endX = Math.min(this._cols - 1, node.x + 1);
+                    let startY = Math.max(0, node.y - 1);
+                    let endY = Math.min(this._rows - 1, node.y + 1);
+                    for (let m = startX; m <= endX; m++) {
+                        for (let n = startY; n <= endY; n++) {
+                            let test = this._grid[m][n];
                             if (test == node || !test.walkable || !this._grid[node.x][test.y].walkable || !this._grid[test.x][node.y].walkable) {
                                 continue;
                             }
-                            var cost: number = AStar.STRAIGHT_COST;
+                            let cost = AStar.STRAIGHT_COST;
                             if (!((node.x == test.x) || (node.y == test.y))) {
                                 cost = AStar.DIAG_COST;
                             }

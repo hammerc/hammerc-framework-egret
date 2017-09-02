@@ -182,7 +182,7 @@ namespace hammerc {
             if (!this._soundEnabled) {
                 return null;
             }
-            var controller: SoundController;
+            let controller: SoundController;
             if (channel <= 0) {
                 controller = new SoundController(false, url, channel, loop, volume);
                 controller.addEventListener(egret.Event.SOUND_COMPLETE, this.soundCompleteHandler, this);
@@ -205,13 +205,13 @@ namespace hammerc {
         }
 
         private soundCompleteHandler(event: egret.Event): void {
-            var controller: SoundController = event.target;
+            let controller: SoundController = event.target;
             controller.removeEventListener(egret.Event.SOUND_COMPLETE, this.soundCompleteHandler, this);
             if (this._loadMgr.isLoading(controller.url)) {
                 this._loadMgr.removeListener(controller.url, controller);
             }
             if (controller.channel == 0) {
-                var index: number = this._soundList.indexOf(controller);
+                let index = this._soundList.indexOf(controller);
                 if (index != -1) {
                     this._soundList.splice(index, 1);
                 }
@@ -221,11 +221,11 @@ namespace hammerc {
         }
 
         private soundIterator(callback: (controller: SoundController) => void, thisObj: any): void {
-            for (var i = 0, len = this._soundList.length; i < len; i++) {
+            for (let i = 0, len = this._soundList.length; i < len; i++) {
                 callback.call(thisObj, this._soundList[i]);
             }
-            for (var key in this._channelMap) {
-                let controller: SoundController = this._channelMap[key];
+            for (let key in this._channelMap) {
+                let controller = this._channelMap[key];
                 callback.call(thisObj, controller);
             }
         }
@@ -248,7 +248,7 @@ namespace hammerc {
          */
         public stopSoundByChannel(channel: number) : void {
             if (channel == 0) {
-                for (var i = 0, len = this._soundList.length; i < len; i++) {
+                for (let i = 0, len = this._soundList.length; i < len; i++) {
                     let controller = this._soundList[i];
                     controller.removeEventListener(egret.Event.SOUND_COMPLETE, this.soundCompleteHandler, this);
                     controller.stop();
@@ -258,7 +258,7 @@ namespace hammerc {
                 }
                 this._soundList.length = 0;
             } else {
-                let controller: SoundController = this._channelMap[channel];
+                let controller = this._channelMap[channel];
                 if (controller) {
                     controller.stop();
                 }
@@ -270,7 +270,7 @@ namespace hammerc {
          */
         public stopAllSounds(): void {
             this.stopSoundByChannel(0);
-            for (var key in this._channelMap) {
+            for (let key in this._channelMap) {
                 this.stopSoundByChannel(+key);
             }
         }
@@ -346,8 +346,8 @@ namespace hammerc {
             if (data && data instanceof egret.Sound) {
                 this._loadedMap[url] = data;
                 if (this._listenerMap.hasOwnProperty(url)) {
-                    var list: SoundController[] = this._listenerMap[url];
-                    for (var i = 0, len = list.length; i < len; i++) {
+                    let list = this._listenerMap[url];
+                    for (let i = 0, len = list.length; i < len; i++) {
                         list[i].$setSound(data);
                     }
                     delete this._listenerMap[url];
@@ -364,7 +364,7 @@ namespace hammerc {
             if (!this._listenerMap.hasOwnProperty(url)) {
                 this._listenerMap[url] = [];
             }
-            var list: SoundController[] = this._listenerMap[url];
+            let list = this._listenerMap[url];
             if (list.indexOf(controller) == -1) {
                 list.push(controller);
             }
@@ -375,8 +375,8 @@ namespace hammerc {
          */
         public removeListener(url: string, controller: SoundController): void {
             if (this._listenerMap.hasOwnProperty(url)) {
-                var list: SoundController[] = this._listenerMap[url];
-                var index: number = list.indexOf(controller);
+                let list = this._listenerMap[url];
+                let index = list.indexOf(controller);
                 if (index != -1) {
                     list.splice(index, 1);
                 }
@@ -462,8 +462,8 @@ namespace hammerc {
                 this._soundChannel = sound.play(0, this._loop);
                 this.updateVolume();
             } else {
-                var current: number = (egret.getTimer() - this._lastTime) * 0.001;
-                var total: number = sound.length * this._loop;
+                let current = (egret.getTimer() - this._lastTime) * 0.001;
+                let total = sound.length * this._loop;
                 if (current >= total) {
                     this.stop();
                 } else {

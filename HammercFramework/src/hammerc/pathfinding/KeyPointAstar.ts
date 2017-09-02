@@ -26,7 +26,7 @@ namespace hammerc {
          * 获取关键点路径.
          */
         public get keyPointPath(): AStarNode[] {
-            var path: AStarNode[] = this.path;
+            let path = this.path;
             if (path == null || path.length < 3) {
                 return path;
             } else {
@@ -36,12 +36,12 @@ namespace hammerc {
         }
 
         private removeCollinearAStarNode(path: AStarNode[]): AStarNode[] {
-            var result: AStarNode[] = [];
+            let result: AStarNode[] = [];
             result.push(path[0]);
-            var offsetX: number = path[0].x - path[1].x;
-            var offsetY: number = path[0].y - path[1].y;
-            var len: number = path.length - 1;
-            var nowIndex: number = 1;
+            let offsetX = path[0].x - path[1].x;
+            let offsetY = path[0].y - path[1].y;
+            let len = path.length - 1;
+            let nowIndex = 1;
             while (len > nowIndex) {
                 if ((path[nowIndex].x - path[nowIndex + 1].x) != offsetX || (path[nowIndex].y - path[nowIndex + 1].y) != offsetY) {
                     result.push(path[nowIndex]);
