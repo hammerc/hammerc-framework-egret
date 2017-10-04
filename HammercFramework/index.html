@@ -27,7 +27,8 @@
 	<script egret="lib" src="libs/modules/res/res.js" src-release="libs/modules/res/res.min.js"></script>
 	<!--modules_files_end-->
 
-	<script src="src/extends/EgretExtends.js"></script>
+	<!--这个标签为游戏框架扩展的文件，最终发布时请手动引入下面的文件-->
+	<script src="src/extends/EgretExtends.min.js"></script>
 
     <!--这个标签为不通过egret提供的第三方库的方式使用的 javascript 文件，请将这些文件放在libs下，但不要放在modules下面。-->
     <!--other_libs_files_start-->
@@ -40,7 +41,7 @@
 	<script egret="game" src="bin-debug/hammerc/clock/ClockManager.js"></script>
 	<script egret="game" src="bin-debug/hammerc/mvc/control/observer/Observer.js"></script>
 	<script egret="game" src="bin-debug/hammerc/pathfinding/KeyPointAstar.js"></script>
-	<script egret="game" src="bin-debug/hammerc/mvc/view/AbstractMediator.js"></script>
+	<script egret="game" src="bin-debug/hammerc/mvc/view/ViewManager.js"></script>
 	<script egret="game" src="bin-debug/hammerc/managers/DragEvent.js"></script>
 	<script egret="game" src="bin-debug/hammerc/managers/DragManager.js"></script>
 	<script egret="game" src="bin-debug/hammerc/managers/LanguageManager.js"></script>
@@ -51,12 +52,11 @@
 	<script egret="game" src="bin-debug/example/DictionaryTest.js"></script>
 	<script egret="game" src="bin-debug/hammerc/mvc/control/observer/Provider.js"></script>
 	<script egret="game" src="bin-debug/hammerc/mvc/facade/Facade.js"></script>
-	<script egret="game" src="bin-debug/hammerc/mvc/inject/MVCDecorator.js"></script>
 	<script egret="game" src="bin-debug/hammerc/mvc/interfaces/Interfaces.js"></script>
 	<script egret="game" src="bin-debug/hammerc/mvc/model/AbstractProxy.js"></script>
 	<script egret="game" src="bin-debug/hammerc/mvc/model/ModelManager.js"></script>
+	<script egret="game" src="bin-debug/hammerc/mvc/view/AbstractMediator.js"></script>
 	<script egret="game" src="bin-debug/example/DragTest.js"></script>
-	<script egret="game" src="bin-debug/hammerc/mvc/view/ViewManager.js"></script>
 	<script egret="game" src="bin-debug/hammerc/notification/NotificationCenter.js"></script>
 	<script egret="game" src="bin-debug/hammerc/core/Injector.js"></script>
 	<script egret="game" src="bin-debug/hammerc/pathfinding/AStarGrid.js"></script>
@@ -89,8 +89,8 @@
          data-content-height="1136"
          data-show-paint-rect="false"
          data-multi-fingered="2"
-         data-show-fps="false" data-show-log="false"
-         data-log-filter="" data-show-fps-style="x:0,y:0,size:30,textColor:0x00c200,bgAlpha:0.9">
+         data-show-fps="true" data-show-log="false"
+         data-log-filter="" data-show-fps-style="x:0,y:0,size:30,textColor:0x00c200,bgAlpha:0.5">
     </div>
     <script>
         //默认使用 WebGL 渲染模式

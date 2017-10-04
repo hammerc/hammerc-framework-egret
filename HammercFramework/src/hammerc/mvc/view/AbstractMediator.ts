@@ -89,4 +89,25 @@ namespace hammerc {
             }
         }
     }
+
+    /**
+     * 注入消息监听到指定的方法上.
+     * @param notificationName 消息名称.
+     */
+    export function InterestNotification(notificationName: string) {
+        return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+            if (!target.__interestNotificationList) {
+                target.__interestNotificationList = {};
+            }
+            let map: { [key: string]: Function[] } = target.__interestNotificationList;
+            if (!map[notificationName]) {
+                map[notificationName] = [];
+            }
+            let list = map[notificationName];
+            let func = descriptor.value;
+            if (list.indexOf(func) == -1) {
+                list.push(func);
+            }
+        };
+    }
 }

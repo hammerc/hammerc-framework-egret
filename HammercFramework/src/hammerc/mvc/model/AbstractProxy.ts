@@ -68,4 +68,24 @@ namespace hammerc {
         public onRemove(): void {
         }
     }
+
+    /**
+     * 注入代理对象的实例到制定的属性中.
+     * @param proxyName 代理对象名称.
+     */
+    export function InjectProxy(proxyName: string) {
+        return function (target: any, propertyKey: string) {
+            if (!target.__injectProxyMap) {
+                target.__injectProxyMap = {};
+            }
+            let map: { [key: string]: string[] } = target.__injectProxyMap;
+            if (!map[proxyName]) {
+                map[proxyName] = [];
+            }
+            let list = map[proxyName];
+            if (list.indexOf(propertyKey) == -1) {
+                list.push(propertyKey);
+            }
+        };
+    }
 }
