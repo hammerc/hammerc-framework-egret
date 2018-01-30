@@ -45,11 +45,12 @@ namespace hammerc {
 
         /**
          * 输出一条用于应用程序调试的消息.
-         * @param args 各种需要输出的数据.
+         * @param msg 消息.
+         * @param args 替换消息字符串标记的数据.
          */
-        public static log(...args): void {
+        public static log(msg: string, ...args: any[]): void {
             if (Logger.printLog) {
-                Logger.logging(LoggerChannel.LOG, "LOG", args);
+                Logger.logging(LoggerChannel.LOG, "LOG", msg, args);
             }
         }
 
@@ -65,11 +66,12 @@ namespace hammerc {
 
         /**
          * 输出一条对应用程序运行提供说明的消息.
-         * @param args 各种需要输出的数据.
+         * @param msg 消息.
+         * @param args 替换消息字符串标记的数据.
          */
-        public static info(...args): void {
+        public static info(msg: string, ...args: any[]): void {
             if (Logger.printInfo) {
-                Logger.logging(LoggerChannel.INFO, "INFO", args);
+                Logger.logging(LoggerChannel.INFO, "INFO", msg, args);
             }
         }
 
@@ -85,11 +87,12 @@ namespace hammerc {
 
         /**
          * 输出一条会对应用程序造成损害的消息.
-         * @param args 各种需要输出的数据.
+         * @param msg 消息.
+         * @param args 替换消息字符串标记的数据.
          */
-        public static warn(...args): void {
+        public static warn(msg: string, ...args: any[]): void {
             if (Logger.printWarn) {
-                Logger.logging(LoggerChannel.WARN, "WARN", args);
+                Logger.logging(LoggerChannel.WARN, "WARN", msg, args);
             }
         }
 
@@ -105,16 +108,17 @@ namespace hammerc {
 
         /**
          * 输出一条会使应用程序无法继续运行的消息.
-         * @param args 各种需要输出的数据.
+         * @param msg 消息.
+         * @param args 替换消息字符串标记的数据.
          */
-        public static error(...args): void {
+        public static error(msg: string, ...args: any[]): void {
             if (Logger.printError) {
-                Logger.logging(LoggerChannel.ERROR, "ERROR", args);
+                Logger.logging(LoggerChannel.ERROR, "ERROR", msg, args);
             }
         }
 
-        private static logging(channel: number, channelName: string, args: Array<any>) {
-            let message = Logger.getTips(channelName) + " " + args.join(", ");
+        private static logging(channel: number, channelName: string, msg: string, args: any[]) {
+            let message = Logger.getTips(channelName) + " " + StringUtil.substitute(msg, ...args);
             switch (channel) {
                 case LoggerChannel.LOG:
                     console.log(message);

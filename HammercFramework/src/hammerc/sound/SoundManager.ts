@@ -353,7 +353,7 @@ namespace hammerc {
                     delete this._listenerMap[url];
                 }
             } else {
-                Logger.error("Sound load error: " + url);
+                Logger.error("Sound load error: {0}", url);
             }
         }
 

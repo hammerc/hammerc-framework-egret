@@ -144,11 +144,11 @@ namespace hammerc {
          * @returns 是否立即重绘屏幕.
          */
         protected update(timeStamp: number): boolean {
+            let passedTime = timeStamp - this._lastTime;
+            this._lastTime = timeStamp;
             if (this._paused) {
                 return;
             }
-            let passedTime = timeStamp - this._lastTime;
-            this._lastTime = timeStamp;
             let length = this._clientList.length;
             if (length == 0) {
                 return;
