@@ -9,19 +9,27 @@
 
 namespace hammerc {
     /**
+     * 定义创建对象池中对象的类型.
+     */
+    export type Creator<T> = {new(): T};
+
+    /**
      * ObjectPool 类定义了对象池对象.
      * @author wizardc
      */
-    export class ObjectPool<T extends ICacheable> {
-        private _creator: () => T;
+    export class ObjectPool<T> {
+        private _creator: Creator<T>;
+        private _maxCount: number;
         private _list: T[];
 
         /**
          * 创建一个 ObjectPool 对象.
-         * @param creator 当对象池中没有对象时, 会调用该方法创建的对象进行返回.
+         * @param creator 当对象池中没有对象时, 会创建该对象进行返回.
+         * @param maxCount 对象池最大可以容纳的对象数量.
          */
-        public constructor(creator: () => T) {
+        public constructor(creator: Creator<T>, maxCount: number = 100) {
             this._creator = creator;
+            this._maxCount = maxCount;
             this._list = [];
         }
 
@@ -37,8 +45,12 @@ namespace hammerc {
          * @param obj 要加入的特效.
          */
         public join(obj: T): void {
-            obj.recycle();
-            this._list.push(obj);
+            if (typeof (<any> obj).onRecycle === "function") {
+                (<any> obj).onRecycle();
+            }
+            if (this._list.length < this._maxCount) {
+                this._list.push(obj);
+            }
         }
 
         /**
@@ -48,10 +60,12 @@ namespace hammerc {
         public take(): T {
             let obj: T;
             if (this._list.length == 0) {
-                obj = this._creator.call(null);
+                obj = new (<any> this._creator)();
             } else {
                 obj = this._list.pop();
-                obj.reuse();
+                if (typeof (<any> obj).onReuse === "function") {
+                    (<any> obj).onReuse();
+                }
             }
             return obj;
         }
@@ -72,11 +86,11 @@ namespace hammerc {
         /**
          * 加入对象池时调用.
          */
-        recycle(): void;
+        onRecycle(): void;
 
         /**
          * 从对象池中取出时调用.
          */
-        reuse(): void;
+        onReuse(): void;
     }
 }
