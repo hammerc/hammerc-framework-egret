@@ -8,7 +8,7 @@
             map1.add(102, "I am 102!");
 
             map1.forEach((item: string, key: number, map: hammerc.Dictionary<number, string>) => {
-                hammerc.Logger.log(item, key);
+                hammerc.Logger.log("{0}, {1}", item, key);
             }, this);
 
             //HashObject 使用测试
@@ -17,7 +17,7 @@
             map2.add(new TestObj("Han Meimei", 26), 456);
 
             map2.forEach((item: number, key: TestObj, map: hammerc.Dictionary<TestObj, number>) => {
-                hammerc.Logger.log(item, key.name, key.age);
+                hammerc.Logger.log("{0}, {1}, {2}", item, key.name, key.age);
             }, this);
 
             //API 测试
@@ -26,17 +26,17 @@
             map3.add(101, "I am 101!");
             map3.add(102, "I am 102!");
 
-            hammerc.Logger.log(map3.toString());
-            hammerc.Logger.log(map3.size);
-            hammerc.Logger.log(map3.has(99));
-            hammerc.Logger.log(map3.has(100));
+            hammerc.Logger.log("{0}", map3);
+            hammerc.Logger.log("{0}", map3.size);
+            hammerc.Logger.log("{0}", map3.has(99));
+            hammerc.Logger.log("{0}", map3.has(100));
 
-            hammerc.Logger.log(map3.remove(101));
-            hammerc.Logger.log(map3.toString());
-            hammerc.Logger.log(map3.size);
-            
+            hammerc.Logger.log("{0}", map3.remove(101));
+            hammerc.Logger.log("{0}", map3);
+            hammerc.Logger.log("{0}", map3.size);
+
             map3.clear();
-            hammerc.Logger.log(map3.toString());
+            hammerc.Logger.log("{0}", map3);
         }
     }
 

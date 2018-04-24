@@ -10,7 +10,7 @@
 namespace hammerc {
     /**
      * RESP 类定义了带有优先级的资源管理类, 作为 RES 的加载补充.
-     * 底层加载仍然是基于 RES 建议所有的基于 URL 的加载都使用该类的方法.
+     * 底层加载仍然是基于 RES 的加载方法.
      * @author wizardc
      */
     export namespace RESP {
@@ -20,6 +20,28 @@ namespace hammerc {
          */
         export function setMaxLoadingThread(thread: number): void {
             instance.setMaxLoadingThread(thread);
+        }
+
+        /**
+         * 异步方式获取配置里的资源. 只要是配置文件里存在的资源, 都可以通过异步方式获取.
+         * @param key 对应配置文件里的 name 属性或 sbuKeys 属性的一项.
+         * @param compFunc 回调函数. 示例: compFunc(data,url):void.
+         * @param thisObject 回调函数的 this 引用.
+         * @param priority 加载优先级, 数值越大越优先进行加载.
+         */
+        export function getResAsync(key: string, compFunc: Function, thisObject: any, priority: number = 0): void {
+            instance.getResAsync(key, compFunc, thisObject, priority);
+        }
+
+        /**
+         * 异步加载资源的 Promise 方式.
+         * 注意: 如果当前的加载项的优先级比较低, 会等待到所有优先级高的对象都加载完毕才会继续向下执行, 如果已经加载好了则立即向下执行.
+         * @param key 对应配置文件里的 name 属性或 sbuKeys 属性的一项.
+         * @param priority 加载优先级, 数值越大越优先进行加载.
+         * @returns 异步加载的 Promise 对象.
+         */
+        export function getResAsyncAsync(key: string, priority: number = 0): Promise<any> {
+            return instance.getResAsyncAsync(key, priority);
         }
 
         /**
@@ -47,10 +69,12 @@ namespace hammerc {
         }
 
         interface ResourceItem {
-            url: string;
+            inConfig: boolean;
+            key?: string;
+            url?: string;
             compFunc: Function;
             thisObject: any;
-            type: string;
+            type?: string;
         }
 
         class Resource {
@@ -69,6 +93,25 @@ namespace hammerc {
                 this._maxLoadingThread = Math.max(thread, 1);
             }
 
+            public getResAsync(key: string, compFunc: Function, thisObject: any, priority: number = 0): void {
+                if (!this._priorityMap[priority]) {
+                    this._priorityList.push(priority);
+                    this._priorityList.sort(this.sortFunc);
+                    this._priorityMap[priority] = [];
+                }
+                let list = this._priorityMap[priority];
+                list.push({inConfig: true, key, compFunc, thisObject});
+                this.loadNext();
+            }
+
+            public getResAsyncAsync(key: string, priority: number = 0): Promise<any> {
+                return new Promise((resolve: (value?: any) => void, reject: (reason?: any) => void) => {
+                    RESP.getResAsync(key, (data, url) => {
+                        resolve(data);
+                    }, this, priority);
+                });
+            }
+
             public getResByUrl(url: string, compFunc: Function, thisObject: any, type?: string, priority: number = 0): void {
                 if (!this._priorityMap[priority]) {
                     this._priorityList.push(priority);
@@ -76,8 +119,16 @@ namespace hammerc {
                     this._priorityMap[priority] = [];
                 }
                 let list = this._priorityMap[priority];
-                list.push({url, compFunc, thisObject, type});
+                list.push({inConfig: false, url, compFunc, thisObject, type});
                 this.loadNext();
+            }
+
+            public getResByUrlAsync(url: string, type?: string, priority: number = 0): Promise<any> {
+                return new Promise((resolve: (value?: any) => void, reject: (reason?: any) => void) => {
+                    RESP.getResByUrl(url, (data, url) => {
+                        resolve(data);
+                    }, this, type, priority);
+                });
             }
 
             private sortFunc(a: number, b: number): number {
@@ -97,24 +148,28 @@ namespace hammerc {
                     }
                 }
                 if (item) {
-                    RES.getResByUrl(item.url, (data: any, url: string) => {
-                        this._nowLoadingThread--;
-                        if (item.compFunc) {
-                            // RES.getResByUrl 中如果发现已经存在数据的话回调已经加过 egret.$callAsync 所以我们这里就不用加了直接回调即可
-                            // egret.$callAsync(item.compFunc, item.thisObject, data, url);
-                            item.compFunc.call(item.thisObject, data, url);
-                        }
-                        this.loadNext();
-                    }, this, item.type);
+                    if (item.inConfig) {
+                        RES.getResAsync(item.key, (data: any, url: string) => {
+                            this._nowLoadingThread--;
+                            if (item.compFunc) {
+                                // RES.getResAsync 中如果发现已经存在数据的话回调已经加过 egret.$callAsync 所以我们这里就不用加了直接回调即可
+                                // egret.$callAsync(item.compFunc, item.thisObject, data, url);
+                                item.compFunc.call(item.thisObject, data, url);
+                            }
+                            this.loadNext();
+                        }, this);
+                    } else {
+                        RES.getResByUrl(item.url, (data: any, url: string) => {
+                            this._nowLoadingThread--;
+                            if (item.compFunc) {
+                                // RES.getResByUrl 中如果发现已经存在数据的话回调已经加过 egret.$callAsync 所以我们这里就不用加了直接回调即可
+                                // egret.$callAsync(item.compFunc, item.thisObject, data, url);
+                                item.compFunc.call(item.thisObject, data, url);
+                            }
+                            this.loadNext();
+                        }, this, item.type);
+                    }
                 }
-            }
-
-            public getResByUrlAsync(url: string, type?: string, priority: number = 0): Promise<any> {
-                return new Promise((resolve: (value?: any) => void, reject: (reason?: any) => void) => {
-                    RESP.getResByUrl(url, (data, url) => {
-                        resolve(data);
-                    }, this, type, priority);
-                });
             }
         }
 
