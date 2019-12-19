@@ -4,6 +4,8 @@ class Main extends egret.DisplayObjectContainer {
 
         // new example.DictionaryTest();
         // new example.NotificationTest();
-        new example.DragTest();
+        // new example.DragTest();
+        new example.DijkstraTest();
+
     }
 }
