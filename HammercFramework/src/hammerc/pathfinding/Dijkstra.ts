@@ -50,8 +50,8 @@ namespace hammerc {
         }
 
         protected search(): number {
-            let start: DijkstraNode = this._startNode;
-            let end: DijkstraNode = this._endNode;
+            let start = this._startNode;
+            let end = this._endNode;
             if (start === end) {
                 this._path = [];
                 return 0;
