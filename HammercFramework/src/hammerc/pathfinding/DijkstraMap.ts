@@ -12,16 +12,16 @@ namespace hammerc {
      * DijkstraGrid 类记录并描述一个需要被寻路的由多个节点组成的图.
      * @author wizardc
      */
-    export class DijkstraGrid {
+    export class DijkstraMap {
         /**
          * 记录所有节点的哈希表对象.
          */
-        protected _grid: { [name: string]: DijkstraNode };
+        protected _map: { [name: string]: DijkstraNode };
 
         /**
-         * 节点数量.
+         * 记录所有节点的列表对象.
          */
-        protected _size: number = 0;
+        protected _list: DijkstraNode[];
 
         /**
          * 记录开始格子.
@@ -37,14 +37,22 @@ namespace hammerc {
          * 创建一个 DijkstraGrid 对象.
          */
         public constructor() {
-            this._grid = {};
+            this._map = {};
+            this._list = [];
+        }
+
+        /**
+         * 获取节点列表.
+         */
+        public get list(): DijkstraNode[] {
+            return this._list;
         }
 
         /**
          * 获取节点数量.
          */
         public get size(): number {
-            return this._size;
+            return this._list.length;
         }
 
         /**
@@ -68,28 +76,6 @@ namespace hammerc {
         }
 
         /**
-         * 添加一个或多个节点.
-         * @param name 节点名称.
-         */
-        public addNode(name: string | string[]): void {
-            if (Array.isArray(name)) {
-                for (let value of name) {
-                    if (!this._grid.hasOwnProperty(value)) {
-                        let node = new DijkstraNode(value);
-                        this._grid[value] = node;
-                        this._size++;
-                    }
-                }
-            } else {
-                if (!this._grid.hasOwnProperty(name)) {
-                    let node = new DijkstraNode(name);
-                    this._grid[name] = node;
-                    this._size++;
-                }
-            }
-        }
-
-        /**
          * 设定一条路径.
          * @param start 起始节点名称.
          * @param end 终止节点名称.
@@ -99,13 +85,23 @@ namespace hammerc {
             if (cost < 0) {
                 throw new Error("移动的代价不能小于0！");
             }
-            let startNode = this._grid[start];
-            let endNode = this._grid[end];
+            this.addNode(start);
+            let startNode = this._map[start];
+            this.addNode(end);
+            let endNode = this._map[end];
             if (startNode.link.hasOwnProperty(endNode.name)) {
                 startNode.link[endNode.name].cost = cost;
             } else {
                 let link = new DijkstraLink(endNode, cost);
                 startNode.link[endNode.name] = link;
+            }
+        }
+
+        private addNode(name: string): void {
+            if (!this._map.hasOwnProperty(name)) {
+                let node = new DijkstraNode(name);
+                this._map[name] = node;
+                this._list.push(node);
             }
         }
 
@@ -115,7 +111,7 @@ namespace hammerc {
          * @return 返回指定的节点.
          */
         public getNode(name: string): DijkstraNode {
-            return this._grid[name];
+            return this._map[name];
         }
 
         /**
@@ -123,7 +119,7 @@ namespace hammerc {
          * @param name 节点名称.
          */
         public setStartNode(name: string): void {
-            this._startNode = this._grid[name];
+            this._startNode = this._map[name];
         }
 
         /**
@@ -131,7 +127,7 @@ namespace hammerc {
          * @param name 节点名称.
          */
         public setEndNode(name: string): void {
-            this._endNode = this._grid[name];
+            this._endNode = this._map[name];
         }
     }
 

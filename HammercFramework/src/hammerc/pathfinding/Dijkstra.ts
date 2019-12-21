@@ -14,7 +14,7 @@ namespace hammerc {
      * @author wizardc
      */
     export class Dijkstra {
-        protected _grid: DijkstraGrid;
+        protected _map: DijkstraMap;
 
         private _startNode: DijkstraNode;
         private _endNode: DijkstraNode;
@@ -39,100 +39,154 @@ namespace hammerc {
          * @param grid 需要寻路的图对象.
          * @return 本次移动的总代价, 如果没有找到路径则返回 -1.
          */
-        public findPath(grid: DijkstraGrid): number {
-            if (this._grid != null) {
+        public findPath(grid: DijkstraMap): number {
+            if (this._map != null) {
                 this.clear();
             }
-            this._grid = grid;
-            this._startNode = this._grid.startNode;
-            this._endNode = this._grid.endNode;
+            this._map = grid;
+            this._startNode = this._map.startNode;
+            this._endNode = this._map.endNode;
             return this.search();
         }
 
         protected search(): number {
             let start = this._startNode;
             let end = this._endNode;
-            if (start === end) {
-                this._path = [];
+            this._path = [];
+            if (start == end) {
                 return 0;
             }
 
-            let costMap: { [name: string]: number } = {};
-            let parentMap: { [name: string]: string } = {};
-            let checkedList: string[] = [];
+            let queue = new PriorityQueue();
+            let distances = {};
+            let previous = {};
 
-            for (let name in start.link) {
-                let cost = start.link[name].cost;
-                costMap[name] = cost;
-                parentMap[name] = start.name;
-            }
-
-            let minCost = this.getMinCost(costMap, checkedList);
-            while (minCost) {
-                let linkMap = this._grid.getNode(minCost).link;
-                if (linkMap) {
-                    this.handleNode(minCost, linkMap, costMap, parentMap);
+            for (let node of this._map.list) {
+                if (node == start) {
+                    distances[node.name] = 0;
+                    queue.enqueue(node.name, 0);
+                } else {
+                    distances[node.name] = Infinity;
+                    queue.enqueue(node.name, Infinity);
                 }
-                checkedList.push(minCost);
-                minCost = this.getMinCost(costMap, checkedList);
             }
 
-            if (!parentMap.hasOwnProperty(end.name)) {
+            while (!queue.empty) {
+                let smallest = queue.dequeue();
+                if (smallest == end.name) {
+                    while (previous[smallest]) {
+                        this._path.push(smallest);
+                        smallest = previous[smallest];
+                    }
+                    break;
+                }
+                if (!smallest || distances[smallest] === Infinity) {
+                    continue;
+                }
+                let link = this._map.getNode(smallest).link;
+                for (let neighbor in link) {
+                    let alt = distances[smallest] + link[neighbor].cost;
+                    if (alt < distances[neighbor]) {
+                        distances[neighbor] = alt;
+                        previous[neighbor] = smallest;
+                        queue.enqueue(neighbor, alt);
+                    }
+                }
+            }
+
+            if (this._path.length == 0) {
                 return -1;
             }
 
-            this._path = [];
-            let parentName = parentMap[end.name];
-            while (parentName) {
-                this._path.unshift(this._grid.getNode(parentName).name);
-                parentName = parentMap[parentName];
+            this._path.push(start.name);
+            this._path.reverse();
+            let cost = 0;
+            for (let i = 0, len = this._path.length - 1; i < len; i++) {
+                let start = this._path[i];
+                let end = this._path[i + 1];
+                cost += this._map.getNode(start).link[end].cost;
             }
-            this._path.push(end.name);
-
-            return costMap[end.name];
-        }
-
-        private getMinCost(costMap: { [name: string]: number }, nameList: string[]): string {
-            let min = Number.MAX_VALUE;
-            let minName: string;
-            for (let name in costMap) {
-                if (nameList.indexOf(name) == -1) {
-                    let cost = costMap[name];
-                    if (min > cost) {
-                        min = cost;
-                        minName = name;
-                    }
-                }
-            }
-            return minName;
-        }
-
-        private handleNode(startName: string, linkMap: { [name: string]: DijkstraLink }, costMap: { [name: string]: number }, parentMap: { [name: string]: string }): void {
-            for (let name in linkMap) {
-                let hasCost = costMap[startName];
-                let cost = linkMap[name].cost;
-                cost += hasCost;
-                if (!costMap.hasOwnProperty(name)) {
-                    costMap[name] = cost;
-                    parentMap[name] = startName;
-                } else {
-                    let oldCost = costMap[name];
-                    if (cost < oldCost) {
-                        costMap[name] = cost;
-                        parentMap[name] = startName;
-                    }
-                }
-            }
+            return cost;
         }
 
         /**
          * 清空所有数据.
          */
         public clear(): void {
-            this._grid = null;
+            this._map = null;
             this._startNode = null;
             this._endNode = null;
             this._path = null;
+        }
+    }
+
+    /**
+     * PriorityQueue 类实现了优先级队列.
+     * @author wizardc
+     */
+    class PriorityQueue {
+        private _nodes: PriorityNode[];
+
+        /**
+         * 创建一个 PriorityQueue 对象.
+         */
+        public constructor() {
+            this._nodes = [];
+        }
+
+        /**
+         * 队列是否为空.
+         */
+        public get empty(): boolean {
+            return !this._nodes.length;
+        }
+
+        /**
+         * 加入队列.
+         * @param name 节点名称.
+         * @param cost 移动的代价.
+         */
+        public enqueue(name: string, cost: number): void {
+            this._nodes.push(new PriorityNode(name, cost));
+            this._nodes.sort(this.sortFunc);
+        }
+
+        private sortFunc(a: PriorityNode, b: PriorityNode): number {
+            return a.cost - b.cost;
+        }
+
+        /**
+         * 移出队列.
+         * @returns 节点名称.
+         */
+        public dequeue(): string {
+            return this._nodes.shift().name;
+        }
+    }
+
+    /**
+     * PriorityNode 类实现了优先级节点.
+     * @author wizardc
+     */
+    class PriorityNode {
+        /**
+         * 节点名称.
+         */
+        public name: string;
+
+        /**
+         * 移动的代价.
+         */
+        public cost: number;
+
+        /**
+         * 创建一个 PriorityNode 对象.
+         * @param name 节点名称.
+         * @param cost 移动的代价.
+         */
+        public constructor(name: string, cost: number) {
+            this.name = name;
+            this.cost = cost;
         }
     }
 }
